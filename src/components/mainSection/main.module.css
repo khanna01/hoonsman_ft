@@ -1,0 +1,9 @@
+.intro__container {
+  display: flex;
+  background-color: #f7f5fd;
+  padding: 60px;
+}
+
+.sample__container {
+  display: flex;
+}

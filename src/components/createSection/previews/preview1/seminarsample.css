@@ -1,0 +1,147 @@
+.body,
+.html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.wrapper {
+  max-width: 380px;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+.container {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+.half-height-block {
+  height: 50vh;
+  background-color: transparent;
+}
+
+.section {
+  scroll-snap-align: start;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  margin-top: 200px;
+  margin-bottom: 200px;
+  animation: backgroundFade 5s ease-in-out infinite;
+  overflow: hidden;
+}
+
+.slider {
+  position: relative;
+  display: flex;
+  transition: all 1s cubic-bezier(0.3, 0.49, 0.37, 0.88);
+}
+
+.background-image {
+  object-fit: cover;
+  z-index: 0;
+  transition: transform 0.5s ease-in-out;
+}
+
+.section p {
+  color: white; /* 기본 텍스트 색상을 지정 (백업으로) */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.5
+  ); /* 텍스트 주변에 반투명 흰색 배경 추가 */
+  padding: 0.5em; /* 텍스트 주위에 여백 추가 */
+  border-radius: 5px; /* 배경 모서리를 둥글게 처리 */
+}
+
+@keyframes backgroundFade {
+  0% {
+    background-color: #ffffff;
+  }
+  50% {
+    background-color: #f0f0f0;
+  }
+  100% {
+    background-color: #ffffff;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 2s ease-in-out forwards;
+}
+
+.fade-out {
+  animation: fadeOut 2s ease-in -out forwards;
+}
+
+.section .text,
+.section .keyword,
+.section .description-text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+
+  opacity: 0;
+  z-index: 5;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+
+  -webkit-text-stroke-width: 1px;
+}
+
+.white-text-with-black-stroke {
+  -webkit-text-stroke-color: black; /* 검은색 테두리 적용 */
+}
+
+.black-text-no-stroke {
+  -webkit-text-stroke-width: 0; /* 테두리 없음 */
+}
+
+.section .keyword {
+  top: 40%;
+  font-size: 2em;
+}
+
+.section .description-text {
+  top: 50%;
+  font-size: 1.5em;
+}
+
+.text-fade-in {
+  animation: fadeIn 1s ease-in-out forwards;
+  animation-delay: 0.5s; /* 애니메이션 딜레이 */
+}
+
+.text-fade-out {
+  animation: fadeOut 1s ease-in-out forwards;
+  animation-delay: 0.5s; /* 애니메이션 딜레이 */
+}

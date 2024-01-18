@@ -1,0 +1,29 @@
+/* Comp1.module.css */
+.container {
+  position: sticky;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  height: 100vh;
+  background-color: rgb(245, 245, 245);
+}
+
+.message {
+  position: absolute;
+  top: 50%;
+  left: 35%;
+  transform: translate(-25%, -50%);
+  font-size: 50px;
+  color: black; /* 적절한 색상 설정 */
+  font-weight: bold;
+  /* 기존 스타일링 */
+  opacity: 0; /* 초기에는 보이지 않도록 설정 */
+  transition: opacity 1s ease; /* 부드러운 페이드 인 효과 */
+}
+
+.fadeIn {
+  opacity: 1; /* 애니메이션 클래스가 적용되면 보이도록 설정 */
+}

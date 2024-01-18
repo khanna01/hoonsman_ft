@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  width: 360px;
+  height: 800px;
+  position: relative;
+  overflow-y: scroll;
+}
+
+.wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.scenecontainer {
+  height: 800px;
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+/* scene 1*/
+
+.scene1 {
+  width: 100%;
+  height: 500%;
+  position: relative;
+  background-color: white;
+}
+
+/* Scene2 */
+
+.scene2 {
+  width: 100%;
+  height: 1500%;
+  position: relative;
+  background-color: white;
+}
+
+/* Scene3 */
+
+.scene3 {
+  width: 100%;
+  height: 1500%;
+  position: relative;
+  background-color: beige;
+}
+
+/* Scene4 */
+
+.scene4 {
+  width: 100%;
+  height: 500%;
+  position: relative;
+  background-color: darkgray;
+}
+
+.mycanvas {
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.message {
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  font-weight: bold;
+  opacity: 0;
+  z-index: 2;
+  word-break: break-all;
+  transform: translateX(-50%) translateY(-50%);
+}
