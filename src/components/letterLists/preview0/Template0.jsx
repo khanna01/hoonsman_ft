@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react'
-import Styles from './preview.module.css'
+import Styles from './template0.module.css'
 import LoadingSpinner from './LoadingSpinner.jsx'
 import {
     paintLRInOut,
@@ -516,7 +516,7 @@ const activeScene = (
     }
 }
 
-export default function Preview({ size, sceneData }) {
+export default function Template0({ size, sceneData }) {
     const vRef = useRef()
     const cRef = useRef()
     const s1Ref = useRef()

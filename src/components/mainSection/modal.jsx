@@ -1,29 +1,24 @@
 import React from 'react'
-import styles from './modal.module.css'
-import SeminarSample from '../createSection/previews/preview1/seminarsample'
-import Promotion from '../createSection/previews/preview3/product_promotion'
-import SamplePage from '../createSection/previews/preview2/SamplePage'
+import Styles from './modal.module.css'
+import SeminarSample from '../letterLists/preview1/seminarsample'
+import Promotion from '../letterLists/preview3/product_promotion'
+import SamplePage from '../letterLists/preview2/SamplePage'
 
-function Modal({ isOpen, closeModal, selectedSampleId }) {
-    const handleBackdropClick = (e) => {
-        if (e.target === e.currentTarget) {
-            closeModal()
-        }
+function Modal({ modalNumber, setModalNumber }) {
+    const onCloseClick = () => {
+        setModalNumber(null)
     }
 
     return (
-        <div
-            className={isOpen ? styles.modalOpen : styles.modalClosed}
-            onClick={handleBackdropClick}
-        >
-            <div className={styles.modalContent}>
-                <button className={styles.closeButton} onClick={closeModal}>
+        <div className={Styles.container}>
+            <div className={Styles.modalContent}>
+                <button className={Styles.closeButton} onClick={onCloseClick}>
                     X
                 </button>
-                {selectedSampleId === 1 && <SeminarSample />}
-                {selectedSampleId === 2 && <Promotion />}
-                {selectedSampleId === 3 && <SamplePage />}
-                <button className={styles.applyButton}>생성하기</button>
+                {modalNumber === 1 && <SeminarSample />}
+                {modalNumber === 2 && <Promotion />}
+                {modalNumber === 3 && <SamplePage />}
+                <button className={Styles.applyButton}>생성하기</button>
             </div>
         </div>
     )

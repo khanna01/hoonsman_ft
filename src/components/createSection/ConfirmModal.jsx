@@ -1,6 +1,6 @@
 import React from 'react'
 import Styles from './confirmmodal.module.css'
-import Preview from './previews/preview0/Preview'
+import Preview from '../letterLists/preview0/Template0'
 
 export default function ConfirmModal({
     sceneData,

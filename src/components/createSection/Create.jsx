@@ -1,14 +1,15 @@
 import { useState, useRef, useEffect } from 'react'
 import Styles from './create.module.css'
 import SettingPage from './SettingPage'
-import Preview0 from './previews/preview0/Preview'
-import SampleData from './sampleData'
+import Preview0 from '../letterLists/preview0/Template0'
+import SampleData from '../../constants/sampleData'
 import ConfirmModal from './ConfirmModal'
-import { mapType0ToSettingData, mapSettingDataToType0 } from './factory'
+import { mapType0ToSettingData, mapSettingDataToType0 } from '../../constants/factory'
+import { BASE_URL } from '../../constants/config'
 
 import { DBService } from '../../services'
 
-const dbService = new DBService(import.meta.VITE_BASE_URL)
+const dbService = new DBService(BASE_URL)
 
 const sizeItemList = [
     {

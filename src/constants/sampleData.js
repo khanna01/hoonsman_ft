@@ -1,11 +1,11 @@
-import img1 from '../../imgs/img1.png'
-import img2 from '../../imgs/img2.png'
-import img3 from '../../imgs/img3.png'
-import img4 from '../../imgs/img4.png'
-import img5 from '../../imgs/img5.png'
-import img6 from '../../imgs/img6.png'
-import img7 from '../../imgs/img7.png'
-import img8 from '../../imgs/img8.png'
+import img1 from '/imgs/template0/img1.png'
+import img2 from '/imgs/template0/img2.png'
+import img3 from '/imgs/template0/img3.png'
+import img4 from '/imgs/template0/img4.png'
+import img5 from '/imgs/template0/img5.png'
+import img6 from '/imgs/template0/img6.png'
+import img7 from '/imgs/template0/img7.png'
+import img8 from '/imgs/template0/img8.png'
 
 const SampleData = [
     {

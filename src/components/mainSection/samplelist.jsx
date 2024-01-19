@@ -1,16 +1,9 @@
 import React, { useState } from 'react'
 import Styles from './samplelist.module.css'
-import Modal from './modal'
-import Img1 from '../../imgs/img1.png'
 
-const SampleList = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false)
-    const [selectedSampleId, setSelectedSampleId] = useState(0)
-    const [isMadeDisplay, setIsMadeDisplay] = useState(false)
-    const onCheckBoxClick = (e) => {
-        setIsMadeDisplay(e?.target?.checked)
-    }
+import Img1 from '/imgs/template0/img1.png'
 
+const SampleList = ({ setModalNumber }) => {
     const samples = [
         {
             id: 1,
@@ -42,28 +35,12 @@ const SampleList = () => {
     ]
 
     const handleSampleBoxClick = (sampleId) => {
-        setSelectedSampleId(sampleId) // 모달을 열 때 선택한 샘플의 ID를 설정
-        setIsModalOpen(true) // 모달을 열기
-    }
-    const closeModal = () => {
-        // setSelectedSampleId(0) // 선택한 샘플 ID 초기화
-        setIsModalOpen(false) // 모달을 닫기
+        setModalNumber(sampleId) // 모달을 열 때 선택한 샘플의 ID를 설정
+        console.log(sampleId)
     }
 
     return (
         <div className={Styles.container}>
-            <div className={Styles.intro}>Take a look at some samples.</div>
-            <div className={Styles.toggle_bar}>
-                <div className={Styles.model8}>
-                    <div className={Styles.checkbox} onClick={onCheckBoxClick}>
-                        <input type="checkbox" id="model8-checkbox" />
-                        <label htmlFor="model8-checkbox"></label>
-                    </div>
-                </div>
-                <div className={Styles.toggle_title}>
-                    {isMadeDisplay ? '만든것' : '샘플'}
-                </div>
-            </div>
             <div className={Styles.box_wrapper}>
                 <div className={Styles.box__container}>
                     <div className={Styles.sample__line}>
@@ -91,11 +68,6 @@ const SampleList = () => {
                     </div>
                 </div>
             </div>
-            <Modal
-                isOpen={isModalOpen}
-                closeModal={closeModal}
-                selectedSampleId={selectedSampleId}
-            />
         </div>
     )
 }
