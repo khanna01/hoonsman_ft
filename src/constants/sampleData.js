@@ -55,7 +55,7 @@ const SampleData = [
         scenes: [
             {
                 id: 's1',
-                images: ['img/intro.png'],
+                images: ['imgs/intro.png'],
                 messages: [
                     {
                         text: '세미나에 대한 소개',
@@ -67,9 +67,9 @@ const SampleData = [
             {
                 id: 's2',
                 images: {
-                    image1: 'img/desc1.png',
-                    image2: 'img/desc1.png',
-                    image3: 'img/desc1.png',
+                    image1: 'imgs/desc1.png',
+                    image2: 'imgs/desc1.png',
+                    image3: 'imgs/desc1.png',
                 },
                 messages: [
                     {
@@ -87,9 +87,9 @@ const SampleData = [
             {
                 id: 's3',
                 images: {
-                    image1: 'img/desc2.png',
-                    image2: 'img/desc2.png',
-                    image3: 'img/desc2.png',
+                    image1: 'imgs/desc2.png',
+                    image2: 'imgs/desc2.png',
+                    image3: 'imgs/desc2.png',
                 },
                 messages: [
                     {
@@ -106,7 +106,7 @@ const SampleData = [
             },
             {
                 id: 's4',
-                images: ['img/location.png'],
+                images: ['imgs/location.png'],
                 messages: [
                     {
                         text: '세미나 위치',
@@ -122,7 +122,7 @@ const SampleData = [
             },
             {
                 id: 's5',
-                images: ['img/conclusion.png'],
+                images: ['imgs/conclusion.png'],
                 messages: [
                     {
                         text: '맺음말',
@@ -138,7 +138,7 @@ const SampleData = [
         scene1: {
             image: {
                 1: {
-                    path: '/img/wedding_Image/img1.png',
+                    path: '/imgs/wedding_Image/img1.png',
                 },
             },
             message: {
@@ -157,16 +157,16 @@ const SampleData = [
         scene2: {
             image: {
                 1: {
-                    path: '/img/wedding_Image/img1.png',
+                    path: '/imgs/wedding_Image/img1.png',
                 },
                 2: {
-                    path: '/img/wedding_Image/img2.png',
+                    path: '/imgs/wedding_Image/img2.png',
                 },
                 3: {
-                    path: '/img/wedding_Image/img3.png',
+                    path: '/imgs/wedding_Image/img3.png',
                 },
                 4: {
-                    path: '/img/wedding_Image/img4.png',
+                    path: '/imgs/wedding_Image/img4.png',
                 },
             },
             message: {
@@ -195,16 +195,16 @@ const SampleData = [
         scene3: {
             image: {
                 1: {
-                    path: '/img/wedding_Image/img1.png',
+                    path: '/imgs/wedding_Image/img1.png',
                 },
                 2: {
-                    path: '/img/wedding_Image/img2.png',
+                    path: '/imgs/wedding_Image/img2.png',
                 },
                 3: {
-                    path: '/img/wedding_Image/img3.png',
+                    path: '/imgs/wedding_Image/img3.png',
                 },
                 4: {
-                    path: '/img/wedding_Image/img4.png',
+                    path: '/imgs/wedding_Image/img4.png',
                 },
             },
             message: {
@@ -234,10 +234,10 @@ const SampleData = [
         scene4: {
             image: {
                 1: {
-                    path: '/img/wedding_Image/img1.png',
+                    path: '/imgs/wedding_Image/img1.png',
                 },
                 2: {
-                    path: '/img/wedding_Image/img2.png',
+                    path: '/imgs/wedding_Image/img2.png',
                 },
             },
             message: {

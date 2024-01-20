@@ -616,7 +616,7 @@ export default function Template0({ size, sceneData }) {
             img.onload = () => {
                 imgLoadCnt++
                 if (imgLoadCnt >= TotalImgCnt) onWindowLoad()
-                console.log(imgLoadCnt)
+
                 setImgs((prev) => {
                     return {
                         ...prev,
@@ -639,7 +639,7 @@ export default function Template0({ size, sceneData }) {
             img.onload = () => {
                 imgLoadCnt++
                 if (imgLoadCnt >= TotalImgCnt) onWindowLoad()
-                console.log(imgLoadCnt)
+
                 setImgs((prev) => {
                     return {
                         ...prev,
@@ -662,7 +662,7 @@ export default function Template0({ size, sceneData }) {
             img.onload = () => {
                 imgLoadCnt++
                 if (imgLoadCnt >= TotalImgCnt) onWindowLoad()
-                console.log(imgLoadCnt)
+
                 setImgs((prev) => {
                     return {
                         ...prev,

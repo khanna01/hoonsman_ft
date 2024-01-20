@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
-import Header from './components/headerSection/Header'
+import Header from './components/createSection/headerSection/Header'
 import Main from './components/mainSection/Main'
 import Create from './components/createSection/Create'
 

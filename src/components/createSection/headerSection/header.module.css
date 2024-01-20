@@ -1,0 +1,23 @@
+.container {
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 0;
+    width: 100%;
+    justify-content: space-between; /* 왼쪽과 오른쪽 끝에 배치 */
+    align-items: center;
+    padding: 3px;
+    background-color: white;
+    z-index: 10;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    padding-left: 20px;
+    justify-content: start;
+}
+
+.login {
+    padding-right: 20px;
+    justify-content: end;
+}

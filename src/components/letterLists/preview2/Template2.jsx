@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from 'react'
-import Styles from './samplepage.module.css'
+import Styles from './template2.module.css'
 
 const messageMotion = {
     s1: {
@@ -258,8 +258,9 @@ const drawImageInCanvas = (
 
 // Sample Data
 
-export default function SamplePage({ size, data }) {
-    const { viewWidth, viewHeight } = size
+export default function Template2({ size, sceneData }) {
+    const data = sceneData
+    const { width: viewWidth, height: viewHeight } = size
 
     const imageMotion = useMemo(() => {
         const obj = {
@@ -349,27 +350,26 @@ export default function SamplePage({ size, data }) {
                 },
             ],
         }
+
         return obj
     }, [size])
 
-    const imgs = useMemo(
-        () => [
-            data.scene1.image[1].path,
-            data.scene2.image[1].path,
-            data.scene2.image[2].path,
-            data.scene2.image[3].path,
-            data.scene2.image[4].path,
-            data.scene3.image[1].path,
-            data.scene3.image[2].path,
-            data.scene3.image[3].path,
-            data.scene3.image[4].path,
-            data.scene4.image[1].path,
-            data.scene4.image[2].path,
-        ],
-        [data],
-    )
+    const imgs = [
+        data.scene1.image[1].path,
+        data.scene2.image[1].path,
+        data.scene2.image[2].path,
+        data.scene2.image[3].path,
+        data.scene2.image[4].path,
+        data.scene3.image[1].path,
+        data.scene3.image[2].path,
+        data.scene3.image[3].path,
+        data.scene3.image[4].path,
+        data.scene4.image[1].path,
+        data.scene4.image[2].path,
+    ]
 
-    const ImgCount = imgs.length * 2
+    const ImgCount = imgs.length
+    console.log(ImgCount)
 
     const [isLoading, setIsLoading] = useState(true)
     const [imgInfo, setImgInfo] = useState({})
@@ -610,6 +610,7 @@ export default function SamplePage({ size, data }) {
             img.src = src
             img.addEventListener('load', (e) => {
                 setImgLoadedCount((prev) => {
+                    console.log(prev)
                     if (prev + 1 >= ImgCount) setIsLoading(false)
                     return prev + 1
                 })
@@ -634,7 +635,10 @@ export default function SamplePage({ size, data }) {
     }, [])
 
     return (
-        <div className={Styles.container}>
+        <div
+            className={Styles.container}
+            style={{ height: `${viewHeight}px`, width: `${viewWidth}px` }}
+        >
             <div
                 ref={wRef}
                 className={Styles.wrapper}

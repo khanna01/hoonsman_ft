@@ -3,9 +3,7 @@
 import React from 'react'
 import styles from './introduce.module.css'
 
-const Introduce = ({ size }) => {
-    // setting size
-
+const Introduce = () => {
     return (
         <div className={styles.container}>
             <div className={styles.text__container}>

@@ -1,10 +1,22 @@
 import { useState, useRef, useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 import Styles from './create.module.css'
 import SettingPage from './SettingPage'
 import Preview0 from '../letterLists/preview0/Template0'
+import Preview1 from '../letterLists/preview1/Template1'
+import Preview2 from '../letterLists/preview2/Template2'
 import SampleData from '../../constants/sampleData'
 import ConfirmModal from './ConfirmModal'
-import { mapType0ToSettingData, mapSettingDataToType0 } from '../../constants/factory'
+import {
+    mapType0ToSettingData,
+    mapSettingDataToType0,
+    mapType1ToSettingData,
+    mapSettingDataToType1,
+    mapType2ToSettingData,
+    mapSettingDataToType2,
+    // mapType3ToSettingData,
+    // mapSettingDataToType3,
+} from '../../constants/factory'
 import { BASE_URL } from '../../constants/config'
 
 import { DBService } from '../../services'
@@ -89,7 +101,10 @@ const SizeBar = ({ sizeList, listIndex, setSizeListIndex }) => {
     )
 }
 
-export default function Create({ type = 0 }) {
+export default function Create() {
+    const navigate = useNavigate()
+    const location = useLocation()
+
     const [settingData, setSettingData] = useState([
         {
             images: ['none'],
@@ -99,75 +114,12 @@ export default function Create({ type = 0 }) {
                     size: 'medium',
                     color: 'white',
                 },
-                {
-                    content: '',
-                    size: 'medium',
-                    color: 'white',
-                },
-                {
-                    content: '',
-                    size: 'medium',
-                    color: 'white',
-                },
-            ],
-        },
-        {
-            images: ['none'],
-            message: [
-                {
-                    content: '',
-                    size: 'medium',
-                    color: 'white',
-                },
-                {
-                    content: '',
-                    size: 'medium',
-                    color: 'white',
-                },
-                {
-                    content: '',
-                    size: 'medium',
-                    color: 'white',
-                },
-                {
-                    content: '',
-                    size: 'medium',
-                    color: 'white',
-                },
-                {
-                    content: '',
-                    size: 'medium',
-                    color: 'white',
-                },
-            ],
-        },
-        {
-            images: ['none'],
-            message: [
-                {
-                    content: '',
-                    size: 'medium',
-                    color: 'white',
-                },
-                {
-                    content: '',
-                    size: 'medium',
-                    color: 'white',
-                },
-                {
-                    content: '',
-                    size: 'medium',
-                    color: 'white',
-                },
-                {
-                    content: '',
-                    size: 'medium',
-                    color: 'white',
-                },
             ],
         },
     ])
-    const [letter, setLetter] = useState({ ...SampleData[type] })
+    const [letter, setLetter] = useState({
+        ...SampleData[location.state?.type || 0],
+    })
     const [sceneIndex, setSceneIndex] = useState(0)
     const [messageFocus, setMessageFocus] = useState(0)
     const [sizeListIndex, setSizeListIndex] = useState(0)
@@ -177,6 +129,11 @@ export default function Create({ type = 0 }) {
     })
     const [isModal, setIsModal] = useState(false)
     const [isCreateLetter, setIsCreateLetter] = useState(false)
+
+    useEffect(() => {
+        console.log(location.state)
+        if (!location.state) navigate('/')
+    }, [navigate, location])
 
     const onCreateClick = async () => {
         setIsCreateLetter(true)
@@ -193,6 +150,12 @@ export default function Create({ type = 0 }) {
         switch (letterType) {
             case 0:
                 mappedSettingData = mapType0ToSettingData(letter)
+                break
+            case 1:
+                mappedSettingData = mapType1ToSettingData(letter)
+                break
+            case 2:
+                mappedSettingData = mapType2ToSettingData(letter)
                 break
         }
         setSettingData(mappedSettingData)
@@ -231,9 +194,16 @@ export default function Create({ type = 0 }) {
 
     const setLetterData = () => {
         let newLetter
-        switch (type) {
+        const letterType = letter.type
+        switch (letterType) {
             case 0:
                 newLetter = mapSettingDataToType0(settingData, letter)
+                break
+            case 1:
+                newLetter = mapSettingDataToType1(settingData, letter)
+                break
+            case 2:
+                newLetter = mapSettingDataToType2(settingData, letter)
                 break
         }
 
@@ -250,7 +220,15 @@ export default function Create({ type = 0 }) {
                         ref={displayContainerRef}
                         className={Styles.display__box}
                     >
-                        <Preview0 size={previewSize} sceneData={letter} />
+                        {letter.type === 0 && (
+                            <Preview0 size={previewSize} sceneData={letter} />
+                        )}
+                        {letter.type === 1 && (
+                            <Preview1 size={previewSize} sceneData={letter} />
+                        )}
+                        {letter.type === 2 && (
+                            <Preview2 size={previewSize} sceneData={letter} />
+                        )}
                     </div>
                     <SizeBar
                         sizeList={sizeItemList}
