@@ -158,6 +158,7 @@ export default function Create() {
                 mappedSettingData = mapType2ToSettingData(letter)
                 break
         }
+        
         setSettingData(mappedSettingData)
     }, [letter])
 
@@ -200,10 +201,10 @@ export default function Create() {
                 newLetter = mapSettingDataToType0(settingData, letter)
                 break
             case 1:
-                newLetter = mapSettingDataToType1(settingData, letter)
+                newLetter = mapSettingDataToType1(settingData)
                 break
             case 2:
-                newLetter = mapSettingDataToType2(settingData, letter)
+                newLetter = mapSettingDataToType2(settingData)
                 break
         }
 

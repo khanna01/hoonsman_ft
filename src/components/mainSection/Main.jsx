@@ -13,7 +13,9 @@ const Main = () => {
         description:
             '이 샘플은 5개의 섹션 소개, 설명1, 설명2, 시간 및 위치, 맺음말로 구성되어있으며, 인터랙티브하지만 간단한 초대장을 만들 수 있습니다.이 샘플은 5개의 섹션 소개, 설명1, 설명2, 시간 및 위치, 맺음말로 구성되어있으며, 인터랙티브하지만 간단한 초대장을 만들 수 있습니다.이 샘플은 5개의 섹션 소개, 설명1, 설명2, 시간 및 위치, 맺음말로 구성되어있으며, 인터랙티브하지만 간단한 초대장을 만들 수 있습니다.',
     })
+
     const [isMadeDisplay, setIsMadeDisplay] = useState(false)
+
     const onCheckBoxClick = (e) => {
         setIsMadeDisplay(e?.target?.checked)
     }

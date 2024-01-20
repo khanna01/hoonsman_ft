@@ -55,8 +55,8 @@ export const mapSettingDataToType0 = (settingData, letter) => {
     return newLetter
 }
 
-export const mapType1ToSettingData = (dummyData) => {
-    return dummyData.scenes.map((scene) => ({
+export const mapType1ToSettingData = (letter) => {
+    return letter.scenes.map((scene) => ({
         images: scene.images ? Object.values(scene.images) : [],
         message: scene.messages
             ? scene.messages.map((msg) => ({
@@ -69,7 +69,9 @@ export const mapType1ToSettingData = (dummyData) => {
 }
 
 export const mapSettingDataToType1 = (settingData) => {
+    console.log(settingData)
     return {
+        type: 1,
         scenes: settingData.map((scene) => ({
             images: scene.images.reduce((acc, img, index) => {
                 acc[`image${index + 1}`] = img
@@ -84,27 +86,27 @@ export const mapSettingDataToType1 = (settingData) => {
     }
 }
 
-export const mapType2ToSettingData = (dummy) => {
-  const newSettingData = []
-  Object.keys(dummy).forEach((s) => {
-      if (s === 'type') return
-      const newScene = {
-          images: [],
-          message: [],
-      }
+export const mapType2ToSettingData = (letter) => {
+    const newSettingData = []
+    Object.keys(letter).forEach((s) => {
+        if (s === 'type') return
+        const newScene = {
+            images: [],
+            message: [],
+        }
 
-      Object.keys(dummy[s].image).forEach((img) => {
-          newScene.images.push(dummy[s].image[img])
-      })
+        Object.keys(letter[s].image).forEach((img) => {
+            newScene.images.push(letter[s].image[img])
+        })
 
-      Object.keys(dummy[s].message).forEach((m) => {
-          newScene.message.push(dummy[s].message[m])
-      })
+        Object.keys(letter[s].message).forEach((m) => {
+            newScene.message.push(letter[s].message[m])
+        })
 
-      newSettingData.push(newScene)
-  })
+        newSettingData.push(newScene)
+    })
 
-  return newSettingData
+    return newSettingData
 }
 
 export const mapSettingDataToType2 = (settingData) => {
@@ -116,7 +118,7 @@ export const mapSettingDataToType2 = (settingData) => {
     ]
 
     const newDummy = {
-        type: 3,
+        type: 2,
         scene1: {
             image: {},
             message: {},
@@ -151,3 +153,4 @@ export const mapSettingDataToType2 = (settingData) => {
 
     return newDummy
 }
+ 

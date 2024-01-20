@@ -14,10 +14,13 @@ const defaultSize = {
 
 function Modal({ modalInfo, setModalInfo }) {
     const { id, type, title, description } = modalInfo
+
     const onCloseClick = () => {
         setModalInfo(null)
     }
+
     const navigate = useNavigate()
+
     const onCreateClick = () => {
         navigate('/create', {
             state: {
@@ -25,6 +28,7 @@ function Modal({ modalInfo, setModalInfo }) {
             },
         })
     }
+
     return (
         <div className={Styles.container}>
             <div className={Styles.wrapper}>

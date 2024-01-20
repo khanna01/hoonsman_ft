@@ -148,6 +148,7 @@
 .message-box .description-text {
     position: relative;
     display: block;
+    text-align: center;
 }
 
 .section .text {

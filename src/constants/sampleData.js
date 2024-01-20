@@ -55,7 +55,7 @@ const SampleData = [
         scenes: [
             {
                 id: 's1',
-                images: ['imgs/intro.png'],
+                images: { image1: 'imgs/intro.png' },
                 messages: [
                     {
                         text: '세미나에 대한 소개',
@@ -106,7 +106,9 @@ const SampleData = [
             },
             {
                 id: 's4',
-                images: ['imgs/location.png'],
+                images: {
+                    image1: 'imgs/location.png',
+                },
                 messages: [
                     {
                         text: '세미나 위치',
@@ -122,7 +124,7 @@ const SampleData = [
             },
             {
                 id: 's5',
-                images: ['imgs/conclusion.png'],
+                images: { image1: 'imgs/conclusion.png' },
                 messages: [
                     {
                         text: '맺음말',

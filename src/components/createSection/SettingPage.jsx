@@ -84,7 +84,7 @@ export default function SettingPage({
 }) {
     const setImgUrl = (imageIndex, imgUrl) => {
         setSettingData((v) => {
-            const newInfo = { ...v }
+            const newInfo = [...v]
             newInfo[sceneIndex].images[imageIndex] = imgUrl
 
             return newInfo
@@ -93,7 +93,7 @@ export default function SettingPage({
 
     const changeControlInfo = (data) => {
         setSettingData((v) => {
-            const newInfo = { ...v }
+            const newInfo = [...v]
             newInfo[sceneIndex].message[messageFocus] = {
                 ...newInfo[sceneIndex].message[messageFocus],
                 ...data,

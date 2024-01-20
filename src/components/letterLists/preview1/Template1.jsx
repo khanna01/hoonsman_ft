@@ -103,7 +103,7 @@ function Template1({ size, sceneData }) {
                         ref={(el) => (sliderRefs.current[0] = el)}
                     >
                         <img
-                            src={seminarData.scenes[0].images[0]}
+                            src={seminarData.scenes[0].images.image1}
                             alt="Intro"
                             className="background-image"
                             style={{ width: size.width, height: size.height }}
@@ -319,7 +319,7 @@ function Template1({ size, sceneData }) {
                 >
                     <div className="slider"></div>
                     <img
-                        src={seminarData.scenes[3].images[0]}
+                        src={seminarData.scenes[3].images.image1}
                         alt="Location"
                         className="background-image"
                         style={{ width: size.width, height: size.height }}
@@ -385,7 +385,7 @@ function Template1({ size, sceneData }) {
                 >
                     <div className="slider">
                         <img
-                            src={seminarData.scenes[4].images[0]}
+                            src={seminarData.scenes[4].images.image1}
                             alt="Intro"
                             className="background-image"
                             style={{ width: size.width, height: size.height }}
