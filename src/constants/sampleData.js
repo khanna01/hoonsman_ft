@@ -1,11 +1,30 @@
-import img1 from '/imgs/template0/img1.png'
-import img2 from '/imgs/template0/img2.png'
-import img3 from '/imgs/template0/img3.png'
-import img4 from '/imgs/template0/img4.png'
-import img5 from '/imgs/template0/img5.png'
-import img6 from '/imgs/template0/img6.png'
-import img7 from '/imgs/template0/img7.png'
-import img8 from '/imgs/template0/img8.png'
+import img1 from '../imgs/template0/img1.png'
+import img2 from '../imgs/template0/img2.png'
+import img3 from '../imgs/template0/img3.png'
+import img4 from '../imgs/template0/img4.png'
+import img5 from '../imgs/template0/img5.png'
+import img6 from '../imgs/template0/img6.png'
+import img7 from '../imgs/template0/img7.png'
+import img8 from '../imgs/template0/img8.png'
+
+import s1img1 from '../imgs/intro.png'
+import s1img2 from '../imgs/desc1.png'
+import s1img3 from '../imgs/desc2.png'
+import s1img4 from '../imgs/location.png'
+import s1img5 from '../imgs/conclusion.png'
+
+import s2img1 from '../imgs/wedding_Image/img1.png'
+import s2img2 from '../imgs/wedding_Image/img2.png'
+import s2img3 from '../imgs/wedding_Image/img3.png'
+import s2img4 from '../imgs/wedding_Image/img4.png'
+
+import s3img1 from '../img/Promo_Image/sampleImg.png'
+import s3img2 from '../img/Promo_Image/Comp1_Main.png'
+import s3img3 from '../img/Promo_Image/Comp1_Sub.png'
+import s3img4 from '../img/Promo_Image/Comp2_Main.png'
+import s3img5 from ',,/img/Promo_Image/Comp3_Sub1.png'
+import s3img6 from ',,/img/Promo_Image/Comp3_Sub2.png'
+import s3img7 from ',,/img/Promo_Image/Comp3_Sub3.png'
 
 const SampleData = [
     {
@@ -55,7 +74,7 @@ const SampleData = [
         scenes: [
             {
                 id: 's1',
-                images: { image1: 'imgs/intro.png' },
+                images: { image1: s1img1 },
                 messages: [
                     {
                         text: '세미나에 대한 소개',
@@ -67,9 +86,9 @@ const SampleData = [
             {
                 id: 's2',
                 images: {
-                    image1: 'imgs/desc1.png',
-                    image2: 'imgs/desc1.png',
-                    image3: 'imgs/desc1.png',
+                    image1: s1img2,
+                    image2: s1img2,
+                    image3: s1img2,
                 },
                 messages: [
                     {
@@ -87,9 +106,9 @@ const SampleData = [
             {
                 id: 's3',
                 images: {
-                    image1: 'imgs/desc2.png',
-                    image2: 'imgs/desc2.png',
-                    image3: 'imgs/desc2.png',
+                    image1: s1img3,
+                    image2: s1img3,
+                    image3: s1img3,
                 },
                 messages: [
                     {
@@ -107,7 +126,7 @@ const SampleData = [
             {
                 id: 's4',
                 images: {
-                    image1: 'imgs/location.png',
+                    image1: s1img4,
                 },
                 messages: [
                     {
@@ -124,7 +143,7 @@ const SampleData = [
             },
             {
                 id: 's5',
-                images: { image1: 'imgs/conclusion.png' },
+                images: { image1: s1img5 },
                 messages: [
                     {
                         text: '맺음말',
@@ -140,7 +159,7 @@ const SampleData = [
         scene1: {
             image: {
                 1: {
-                    path: '/imgs/wedding_Image/img1.png',
+                    path: s2img1,
                 },
             },
             message: {
@@ -159,16 +178,16 @@ const SampleData = [
         scene2: {
             image: {
                 1: {
-                    path: '/imgs/wedding_Image/img1.png',
+                    path: s2img1,
                 },
                 2: {
-                    path: '/imgs/wedding_Image/img2.png',
+                    path: s2img2,
                 },
                 3: {
-                    path: '/imgs/wedding_Image/img3.png',
+                    path: s2img3,
                 },
                 4: {
-                    path: '/imgs/wedding_Image/img4.png',
+                    path: s2img4,
                 },
             },
             message: {
@@ -197,16 +216,16 @@ const SampleData = [
         scene3: {
             image: {
                 1: {
-                    path: '/imgs/wedding_Image/img1.png',
+                    path: s2img1,
                 },
                 2: {
-                    path: '/imgs/wedding_Image/img2.png',
+                    path: s2img2,
                 },
                 3: {
-                    path: '/imgs/wedding_Image/img3.png',
+                    path: s2img3,
                 },
                 4: {
-                    path: '/imgs/wedding_Image/img4.png',
+                    path: s2img4,
                 },
             },
             message: {
@@ -236,10 +255,10 @@ const SampleData = [
         scene4: {
             image: {
                 1: {
-                    path: '/imgs/wedding_Image/img1.png',
+                    path: s2img1,
                 },
                 2: {
-                    path: '/imgs/wedding_Image/img2.png',
+                    path: s2img2,
                 },
             },
             message: {
@@ -265,9 +284,9 @@ const SampleData = [
 
         s1: {
             imgs: {
-                intro: '/img/Promo_Image/sampleImg.png',
-                img1: '/img/Promo_Image/Comp1_Main.png',
-                img2: '/img/Promo_Image/Comp1_Sub.png',
+                intro: s3img1,
+                img1: s3img2,
+                img2: s3img3,
             },
             messages: [
                 { context: '갤럭시 Z 플립 5', size: 'large', color: 'black' },
@@ -275,7 +294,7 @@ const SampleData = [
         },
         s2: {
             imgs: {
-                img3: '/img/Promo_Image/Comp2_Main.png',
+                img3: s3img4,
             },
             messages: [
                 {
@@ -293,9 +312,9 @@ const SampleData = [
         },
         s3: {
             imgs: {
-                img4: '/img/Promo_Image/Comp3_Sub1.png',
-                img5: '/img/Promo_Image/Comp3_Sub2.png',
-                img6: '/img/Promo_Image/Comp3_Sub3.png',
+                img4: s3img5,
+                img5: s3img6,
+                img6: s3img7,
             },
             messages: [
                 {
@@ -312,6 +331,7 @@ const SampleData = [
             ],
         },
         s4: {
+            imgs: {},
             messages: [
                 {
                     context: '지금 바로 Z플립5와 함께하세요!',

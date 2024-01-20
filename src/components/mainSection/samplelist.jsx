@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
 import Styles from './samplelist.module.css'
 
+import intro1img from '../imgs/intro.png'
+import intro2img from '../imgs/Promo_Image/Comp1_Main.png'
+import intro3img from '../imgs/wedding_Image/img1.png'
+import intro4img from '../imgs/template0/img1.png'
+
 const SampleList = ({ setModalInfo }) => {
     const samples = [
         {
             id: 1,
             type: 1,
-            imageUrl: '/imgs/intro.png',
+            imageUrl: intro1img,
             title: '세미나 초대장',
             description:
                 '이 샘플은 5개의 섹션 소개, 설명1, 설명2, 시간 및 위치, 맺음말로 구성되어있으며, 인터랙티브하지만 간단한 초대장을 만들 수 있습니다.',
@@ -14,7 +19,7 @@ const SampleList = ({ setModalInfo }) => {
         {
             id: 2,
             type: 3,
-            imageUrl: '/imgs/Promo_Image/Comp1_Main.png',
+            imageUrl: intro2img,
             title: '상품 프로모션',
             description:
                 '상품 프로모션 얘 템플릿 컴포넌트로 만들어서 다시 재조립 해야됩니당',
@@ -22,7 +27,7 @@ const SampleList = ({ setModalInfo }) => {
         {
             id: 3,
             type: 2,
-            imageUrl: '/imgs/wedding_Image/img1.png',
+            imageUrl: intro3img,
             title: '청첩장',
             description:
                 '이 템플릿은 12개의 문구와 11개의 사진으로 구성되어 있습니다.',
@@ -30,7 +35,7 @@ const SampleList = ({ setModalInfo }) => {
         {
             id: 4,
             type: 0,
-            imageUrl: '/imgs/template0/img1.png',
+            imageUrl: intro4img,
             title: '제목 4',
             description: '샘플에 대한 설명 4',
         },
