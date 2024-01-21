@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import Styles from './samplelist.module.css'
 
-import intro1img from '../imgs/intro.png'
-import intro2img from '../imgs/Promo_Image/Comp1_Main.png'
-import intro3img from '../imgs/wedding_Image/img1.png'
-import intro4img from '../imgs/template0/img1.png'
+import intro1img from '../../imgs/intro.png'
+import intro2img from '../../imgs/Promo_Image/Comp1_Main.png'
+import intro3img from '../../imgs/wedding_Image/img1.png'
+import intro4img from '../../imgs/template0/img1.png'
 
 const SampleList = ({ setModalInfo }) => {
     const samples = [
@@ -64,7 +64,6 @@ const SampleList = ({ setModalInfo }) => {
                                     </div>
                                     <div className={Styles.text_box}>
                                         <h2>{sample.title}</h2>
-                                        {/* <p>{sample.description}</p> */}
                                     </div>
                                 </div>
                             </div>

@@ -3,6 +3,7 @@ import './App.css'
 import Header from './components/createSection/headerSection/Header'
 import Main from './components/mainSection/Main'
 import Create from './components/createSection/Create'
+import Letter from './components/Letter'
 
 function App() {
     return (
@@ -11,6 +12,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Main />} />
                 <Route path="/create" element={<Create />} />
+                <Route path="/letter/:letterid" element={<Letter />} />
             </Routes>
         </BrowserRouter>
     )

@@ -18,13 +18,13 @@ import s2img2 from '../imgs/wedding_Image/img2.png'
 import s2img3 from '../imgs/wedding_Image/img3.png'
 import s2img4 from '../imgs/wedding_Image/img4.png'
 
-import s3img1 from '../img/Promo_Image/sampleImg.png'
-import s3img2 from '../img/Promo_Image/Comp1_Main.png'
-import s3img3 from '../img/Promo_Image/Comp1_Sub.png'
-import s3img4 from '../img/Promo_Image/Comp2_Main.png'
-import s3img5 from ',,/img/Promo_Image/Comp3_Sub1.png'
-import s3img6 from ',,/img/Promo_Image/Comp3_Sub2.png'
-import s3img7 from ',,/img/Promo_Image/Comp3_Sub3.png'
+import s3img1 from '../imgs/Promo_Image/sampleImg.png'
+import s3img2 from '../imgs/Promo_Image/Comp1_Main.png'
+import s3img3 from '../imgs/Promo_Image/Comp1_Sub.png'
+import s3img4 from '../imgs/Promo_Image/Comp2_Main.png'
+import s3img5 from '../imgs/Promo_Image/Comp3_Sub1.png'
+import s3img6 from '../imgs/Promo_Image/Comp3_Sub2.png'
+import s3img7 from '../imgs/Promo_Image/Comp3_Sub3.png'
 
 const SampleData = [
     {

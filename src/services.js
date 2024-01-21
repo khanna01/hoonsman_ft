@@ -5,6 +5,7 @@ class HttpReq {
 
     postRequest = async (endPoint, data, headers = {}) => {
         try {
+            console.log(this.baseUrl)
             const res = await fetch(this.baseUrl + endPoint, {
                 method: 'POST',
                 body: data,
@@ -50,7 +51,20 @@ export class DBService {
                 'Content-Type': 'application/json',
             },
         )
-
         console.log(result)
+    }
+
+    readLetter = async (letterid) => {
+        const result = await this.http.postRequest(
+            '/letter/read',
+            JSON.stringify({
+                letterid,
+            }),
+            {
+                'Content-Type': 'application/json',
+            },
+        )
+
+        return result
     }
 }
