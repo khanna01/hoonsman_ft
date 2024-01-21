@@ -114,44 +114,60 @@ export const paintMidToAll = (
     else if (drawRatio > 1) drawRatio = 1
     const drawPicDefaultHeight =
         ((drawRangeY2 - drawRangeY1) / 100) * paintingBorderRange
-    const drawYPStart = (drawRangeY1 + drawRangeY2) / 2 - drawPicDefaultHeight
-    const drawYPDefaultRange = drawPicDefaultHeight * 2
-
-    const drawYPRange = (drawRangeY2 + drawRangeY1) / 2 - drawPicDefaultHeight
-
     const drawCanvDefaultHeight = (canvasHeight / 100) * paintingBorderRange
-    const drawYCStart = canvasHeight / 2 - drawCanvDefaultHeight
-    const drawYCDefaultRange = drawCanvDefaultHeight * 2
 
-    const drawYCRange = canvasHeight / 2 - drawCanvDefaultHeight
+    const CSYUp =
+        canvasHeight / 2 +
+        drawCanvDefaultHeight -
+        (canvasHeight / 2 - drawCanvDefaultHeight) * drawRatio
+    const CSYDown = canvasHeight / 2 - drawCanvDefaultHeight
 
-    const drawYP = drawYPRange * drawRatio
-    const drawYC = drawYCRange * drawRatio
+    const CDYUp =
+        drawCanvDefaultHeight * 2 +
+        (canvasHeight / 2 - drawCanvDefaultHeight) * drawRatio
+    const CDYDown =
+        drawCanvDefaultHeight * 2 +
+        (canvasHeight / 2 - drawCanvDefaultHeight) * drawRatio
+
+    const PSYUp =
+        drawRangeY1 +
+        ((drawRangeY2 - drawRangeY1) / 2 - drawPicDefaultHeight) -
+        ((drawRangeY2 - drawRangeY1) / 2 - drawPicDefaultHeight) * drawRatio
+    const PSYDown =
+        drawRangeY1 + ((drawRangeY2 - drawRangeY1) / 2 - drawPicDefaultHeight)
+
+    const PDYUp =
+        drawPicDefaultHeight * 2 +
+        ((drawRangeY2 - drawRangeY1) / 2 - drawPicDefaultHeight) * drawRatio
+
+    const PDYDown =
+        drawPicDefaultHeight * 2 +
+        ((drawRangeY2 - drawRangeY1) / 2 - drawPicDefaultHeight) * drawRatio
 
     // 윗 부분 그리기
     ctx.drawImage(
         paintImg,
         drawRangeX1,
-        drawYPStart - drawYP,
+        PSYUp,
         drawRangeX2 - drawRangeX1,
-        drawYP + drawYPDefaultRange,
+        PDYUp,
         0,
-        drawYCStart - drawYC,
+        CSYUp,
         canvasWidth,
-        drawYC + drawYCDefaultRange,
+        CDYUp,
     )
 
     // 아랫 부분 그리기
     ctx.drawImage(
         paintImg,
         drawRangeX1,
-        drawYPStart,
+        PSYDown,
         drawRangeX2 - drawRangeX1,
-        drawYP + drawYPDefaultRange,
+        PDYDown,
         0,
-        drawYCStart,
+        CSYDown,
         canvasWidth,
-        drawYCDefaultRange + drawYC,
+        CDYDown,
     )
 }
 

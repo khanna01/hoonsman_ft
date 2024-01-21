@@ -21,14 +21,17 @@ export default function Letter() {
     const navigate = useNavigate()
     console.log(params)
     useEffect(() => {
-        setSize({
-            width: document.body.offsetWidth,
-            height: window.innerWidth,
-        })
         window.addEventListener('resize', () => {
             setTrigger((prev) => prev + 1)
         })
     }, [])
+
+    useEffect(() => {
+        setSize({
+            width: document.body.offsetWidth,
+            height: window.innerHeight,
+        })
+    }, [trigger])
 
     useEffect(() => {
         if (!isLoading) return

@@ -3,7 +3,8 @@ import Styles from './settingpage.module.css'
 import MessageHandler from './MessageHandler'
 
 import { CloudinaryService } from '../../services'
-const cloudinaryService = new CloudinaryService(import.meta.BASE_URL)
+import { BASE_URL } from '../../constants/config'
+const cloudinaryService = new CloudinaryService(BASE_URL)
 const ImgLoading = () => {
     return (
         <div className={Styles.img_loading_container}>
