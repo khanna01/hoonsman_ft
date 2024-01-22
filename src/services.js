@@ -54,6 +54,12 @@ export class DBService {
         console.log(result)
     }
 
+    readAllLetter = async () => {
+        const result = await this.http.postRequest('/letter/readall')
+        console.log(result)
+        return result
+    }
+
     readLetter = async (letterid) => {
         const result = await this.http.postRequest(
             '/letter/read',

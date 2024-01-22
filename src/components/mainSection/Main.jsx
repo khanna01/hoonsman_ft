@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Styles from './main.module.css'
 import Introduce from './introduce'
 import SampleList from './samplelist'
 import Modal from './modal'
+
+import { DBService } from '../../services'
+import { BASE_URL } from '../../constants/config'
+
+const dbService = new DBService(BASE_URL)
 
 const Main = () => {
     const [modalInfo, setModalInfo] = useState({
@@ -15,10 +20,26 @@ const Main = () => {
     })
 
     const [isMadeDisplay, setIsMadeDisplay] = useState(false)
+    const [allLetter, setAllLetter] = useState([])
+    const [refresh, setRefresh] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
 
     const onCheckBoxClick = (e) => {
         setIsMadeDisplay(e?.target?.checked)
     }
+
+    const onRefreshClick = () => {
+        setRefresh((prev) => !prev)
+    }
+
+    useEffect(() => {
+        setIsLoading(true)
+        ;(async () => {
+            const result = await dbService.readAllLetter()
+            console.log(result)
+        })()
+        setIsLoading(false)
+    }, [refresh])
 
     // 모달을 닫는 함수
 
