@@ -36,7 +36,7 @@
     height: 50px;
     border-radius: 50%;
     z-index: 1;
-    transition: all 0.1s linear;
+    transition: all 0.05s linear;
     clip-path: rect(0px 100% 100% 0% round 0%);
 }
 

@@ -8,14 +8,24 @@ import profileImg from '../../imgs/hoonpic.png'
 const Header = () => {
     const [size, setSize] = useState(0)
     const [active, setActive] = useState(0)
-    const [viewSize, setViewSize] = useState({ width: 0, height: 0 })
+    const [trigger, setTrigger] = useState(false)
     useEffect(() => {
         const viewWidth = document.body.offsetWidth
         const viewHeight = window.innerHeight
         if (viewWidth > viewHeight) setSize(viewHeight)
         else setSize(viewWidth)
+    }, [trigger])
 
-        setViewSize({ width: viewWidth, height: viewHeight })
+    useEffect(() => {
+        const onResize = () => {
+            setTrigger((prev) => !prev)
+        }
+
+        window.addEventListener('resize', onResize)
+
+        return () => {
+            window.removeEventListener('resize', onResize)
+        }
     }, [])
 
     const onProfileClick = () => {
