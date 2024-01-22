@@ -1,95 +1,38 @@
 .container {
-    display: flex;
-    width: 100vw;
-    flex-direction: column;
-    /* align-items: center; */
-}
-
-.box_wrapper {
-    width: 100%;
+    position: relative;
     display: flex;
     justify-content: center;
 }
-.box__container {
+.spin_list {
     display: flex;
-    max-width: 1200px;
     justify-content: center;
-    flex-grow: 1;
-    background-color: white;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    flex-direction: column;
 }
 
-.sample__line {
-    display: grid;
-    justify-content: space-between;
-    grid-template-columns: repeat(2, 1fr);
-    padding-left: 30px;
-    margin-bottom: 100px;
-    grid-auto-rows: 500px;
-    row-gap: 100px;
-}
-
-.box_item {
-    width: 100%;
-    height: 100%;
+.img_container {
+    position: absolute;
     display: flex;
-    border: 0;
+    justify-content: center;
+    overflow: hidden;
+    transform-origin: 50% 100%;
+    transform: rotateZ(0);
+    transition: all 1s ease-out;
+}
+
+.img_background {
+    position: absolute;
+    display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-}
-
-.letter_box {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-width: 70%;
-    align-items: center;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    border-radius: 10px;
-    padding: 20px;
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+    opacity: 0;
     cursor: pointer;
-    transition: all 0.05s linear;
 }
-
-.letter_box:hover {
-    background-color: rgba(0, 0, 0, 0.15);
-}
-
-.img_box {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.box_item img {
-    height: 300px;
-}
-
-/* SampleBox 컴포넌트 CSS 내부 */
-
-.text_box {
-    padding: 20px; /* 내용과 경계 사이의 여백 설정 */
-    box-sizing: border-box; /* 패딩을 포함한 너비 유지 */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* 텍스트를 왼쪽 정렬 */
-}
-
-.text_box h2 {
-    margin: 0 0 10px 0; /* 아래쪽 마진 설정 */
-    font-size: 24px; /* 제목 폰트 크기 */
-    font-weight: bold; /* 제목 폰트 두께 */
-    color: #333; /* 제목 색상 */
-}
-
-.text_box p {
-    max-width: 50%;
-    margin: 0; /* 마진 제거 */
-    font-size: 16px; /* 설명 텍스트 폰트 크기 */
-    color: #666; /* 설명 텍스트 색상 */
+.img_background:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    opacity: 1;
 }

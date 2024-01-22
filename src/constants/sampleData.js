@@ -26,6 +26,8 @@ import s3img5 from '../imgs/Promo_Image/Comp3_Sub1.png'
 import s3img6 from '../imgs/Promo_Image/Comp3_Sub2.png'
 import s3img7 from '../imgs/Promo_Image/Comp3_Sub3.png'
 
+import defaultImg from '../imgs/hoonsman.png'
+
 const SampleData = [
     {
         type: 0,
@@ -342,5 +344,14 @@ const SampleData = [
         },
     },
 ]
+
+export const madeDefaultData = {
+    thumbnail: defaultImg,
+}
+
+export const sampleDefaultData = {
+    id: 0,
+    thumbnail: defaultImg,
+}
 
 export default SampleData
