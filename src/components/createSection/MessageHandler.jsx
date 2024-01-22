@@ -89,10 +89,13 @@ export default function MessageHandler({
                 <div className={Styles.message_option}>
                     <div className={Styles.title}>저장</div>
                     <div className={Styles.option_bar}>
-                        <div onClick={onTempSaveClick} className={Styles.opt}>
+                        <div
+                            onClick={onTempSaveClick}
+                            className={Styles.save_btn}
+                        >
                             적용
                         </div>
-                        <div onClick={onSaveClick} className={Styles.opt}>
+                        <div onClick={onSaveClick} className={Styles.save_btn}>
                             생성
                         </div>
                     </div>

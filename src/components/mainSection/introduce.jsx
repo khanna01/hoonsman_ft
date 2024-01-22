@@ -2,6 +2,7 @@
 
 import React from 'react'
 import styles from './introduce.module.css'
+import introImg from '../../imgs/imgIntro.png'
 
 const Introduce = () => {
     return (
@@ -19,7 +20,7 @@ const Introduce = () => {
             </div>
 
             <div className={styles.img__container}>
-                <img src={`/imgs/imgIntro.png`} alt="Intro" />
+                <img src={introImg} alt="Intro" />
             </div>
         </div>
     )

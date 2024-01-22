@@ -1,7 +1,7 @@
 .container {
     padding-top: 30px;
     display: flex;
-    background-color: #fedad8;
+    background-color: #f7f7f7;
 }
 
 .left,
@@ -55,15 +55,16 @@
 /* Scene Container*/
 
 .scene_container {
-    background-color: #fdf7f7;
+    background-color: #ffffff;
     border-radius: 15px;
     overflow: hidden;
+    border: 1px solid;
 }
 .editor_header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fcf0ee;
+    background-color: #3b5998bb;
     padding: 15px;
 }
 
@@ -156,7 +157,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f5e4e1;
+    background-color: #ffffff;
     flex-grow: 1;
     margin-bottom: 20px;
     border-radius: 20px;
@@ -196,7 +197,7 @@
 }
 
 .bar_item {
-    background-color: #ffa9a2;
+    background-color: #a9bae0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -207,10 +208,10 @@
 }
 
 .bar_items .bar_item:hover {
-    background-color: #f78277;
+    background-color: #92a6d1;
 }
 .bar_now {
-    background-color: #f78277;
+    background-color: #3b5998bb;
     border-radius: 10px;
     transition: all 0.1s linear;
 }
