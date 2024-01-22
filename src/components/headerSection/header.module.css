@@ -13,11 +13,47 @@
 }
 
 .logo {
-    padding-left: 20px;
     justify-content: start;
 }
 
-.login {
+.logo img {
+    height: 60px;
+    margin-left: 10px;
+}
+
+.profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding-right: 20px;
     justify-content: end;
+    cursor: pointer;
+}
+
+.profile_img {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    z-index: 1;
+    transition: all 0.1s linear;
+    clip-path: rect(0px 100% 100% 0% round 0%);
+}
+
+.img_active {
+    clip-path: rect(0px 100% 100% 100% round 0%);
+}
+
+.special_img {
+    position: fixed;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    transition: all 0.15s linear;
+    clip-path: rect(0px 100% 100% 100% round 0%);
+}
+
+.special_active1 {
+    clip-path: rect(0px 100% 100% 0% round 0%);
 }

@@ -91,6 +91,7 @@ export default function SettingPage({
             return newInfo
         })
     }
+    console.log(settingData)
 
     const changeControlInfo = (data) => {
         setSettingData((v) => {
