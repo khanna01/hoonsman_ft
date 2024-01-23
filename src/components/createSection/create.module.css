@@ -226,3 +226,119 @@
 .bar_container_focus {
     overflow: visible;
 }
+
+/* Keyword Bar */
+
+.keyword_container {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 20;
+}
+
+.keyword_wrapper {
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+}
+
+.keyword_title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.keyword_bar {
+    display: flex;
+    padding: 20px;
+    border: 1px solid #f5e4e1;
+    border-radius: 10px;
+    width: 100%;
+    overflow-x: scroll;
+    margin-bottom: 10px;
+}
+
+.keyword_input_box {
+    position: relative;
+    padding: 5px;
+    width: 80px;
+    max-width: 80px;
+    min-width: 80px;
+    overflow: hidden;
+    background-color: #f5e4e1;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+.keyword_input {
+    padding: 8px;
+    margin-left: 5px;
+    all: unset;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.keyword_add_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    width: 50px;
+    max-width: 50px;
+    min-width: 50px;
+    overflow: hidden;
+    background-color: #f3bab0;
+    margin-right: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+
+.keyword_add_box:hover {
+    background-color: #ffd9d2;
+}
+
+.keyword_delete_btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #f78277;
+    cursor: pointer;
+}
+
+.keyword_delete_btn:hover {
+    background-color: #f6a098;
+}
+
+.keyword_submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 15px 20px;
+    border: 1px solid #f7e4e2;
+    border-radius: 10px;
+    width: 100%;
+    color: #fa9999;
+    cursor: pointer;
+}
+
+.keyword_submit:hover {
+    background-color: #ffd6cf;
+}

@@ -102,6 +102,76 @@ const SizeBar = ({ sizeList, listIndex, setSizeListIndex }) => {
     )
 }
 
+const KeywordModal = ({ submitKeyword }) => {
+    const [keywords, setKeywords] = useState(['', ''])
+    const onKeywordChange = (e, index) => {
+        const value = e.target.value
+        setKeywords((prev) => {
+            const newKeywords = [...prev]
+            newKeywords[index] = value
+            return newKeywords
+        })
+    }
+
+    const onKeywordDeleteClick = (removeIndex) => {
+        setKeywords((prev) => prev.filter((_, index) => removeIndex !== index))
+    }
+    const onKeywordAddClick = () => {
+        setKeywords((prev) => [...prev, ''])
+    }
+    const onKeywordSubmitClick = () => {
+        submitKeyword(keywords)
+    }
+
+    return (
+        <div className={Styles.keyword_container}>
+            <div className={Styles.keyword_wrapper}>
+                <div className={Styles.keyword_title}>
+                    주제 또는 키워드를 입력해주세요!!
+                </div>
+                <div className={Styles.keyword_bar}>
+                    {keywords.map((value, index) => (
+                        <div
+                            key={'keyword' + index}
+                            className={Styles.keyword_input_box}
+                        >
+                            {index !== 0 && (
+                                <div
+                                    className={Styles.keyword_delete_btn}
+                                    onClick={() => onKeywordDeleteClick(index)}
+                                >
+                                    {' '}
+                                </div>
+                            )}
+                            <input
+                                type="text"
+                                className={Styles.keyword_input}
+                                onChange={(e) => {
+                                    onKeywordChange(e, index)
+                                }}
+                                placeholder="키워드"
+                                value={keywords[index]}
+                            />
+                        </div>
+                    ))}
+                    <div
+                        className={Styles.keyword_add_box}
+                        onClick={onKeywordAddClick}
+                    >
+                        추가
+                    </div>
+                </div>
+                <div
+                    onClick={onKeywordSubmitClick}
+                    className={Styles.keyword_submit}
+                >
+                    제출하기
+                </div>
+            </div>
+        </div>
+    )
+}
+
 export default function Create() {
     const navigate = useNavigate()
     const location = useLocation()
@@ -131,6 +201,8 @@ export default function Create() {
     const [isModal, setIsModal] = useState(false)
     const [isCreateLetter, setIsCreateLetter] = useState(false)
     const [isCreated, setIsCreated] = useState(false)
+    const [isKeywordModal, setIsKeywordModal] = useState(true)
+    const [isAILoading, setIsAILoading] = useState(true)
 
     useEffect(() => {
         console.log(location.state)
@@ -214,6 +286,13 @@ export default function Create() {
         setLetter(newLetter)
     }
 
+    const submitKeyword = (keywords) => {
+        console.log(keywords)
+        setIsKeywordModal(false)
+        setIsAILoading(true)
+        // open ai 요청하기 ...
+    }
+
     return (
         <div className={Styles.container}>
             <div className={Styles.left}>
@@ -287,7 +366,15 @@ export default function Create() {
                         isCreateLetter={isCreateLetter}
                     />
                 )}
-                {isCreated && <CreatedModal letterId={isCreated} setIsCreated={setIsCreated}/>}
+                {isCreated && (
+                    <CreatedModal
+                        letterId={isCreated}
+                        setIsCreated={setIsCreated}
+                    />
+                )}
+                {isKeywordModal && (
+                    <KeywordModal submitKeyword={submitKeyword} />
+                )}
             </div>
         </div>
     )
