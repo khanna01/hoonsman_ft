@@ -146,7 +146,11 @@ const Main = () => {
             <div className={Styles.toggle_bar}>
                 <div className={Styles.model8}>
                     <div className={Styles.checkbox} onClick={onCheckBoxClick}>
-                        <input type="checkbox" id="model8-checkbox" />
+                        <input
+                            className={Styles.check_input}
+                            type="checkbox"
+                            id="model8-checkbox"
+                        />
                         <label htmlFor="model8-checkbox"></label>
                     </div>
                 </div>

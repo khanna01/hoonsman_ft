@@ -20,6 +20,7 @@ import {
 import { BASE_URL } from '../../constants/config'
 
 import { DBService } from '../../services'
+import CreatedModal from './CreatedModal'
 
 const dbService = new DBService(BASE_URL)
 
@@ -129,6 +130,7 @@ export default function Create() {
     })
     const [isModal, setIsModal] = useState(false)
     const [isCreateLetter, setIsCreateLetter] = useState(false)
+    const [isCreated, setIsCreated] = useState(false)
 
     useEffect(() => {
         console.log(location.state)
@@ -141,6 +143,7 @@ export default function Create() {
         console.log(result)
         setIsCreateLetter(false)
         setIsModal(false)
+        setIsCreated(result.letterid)
     }
 
     // mapping letter data -> settingData
@@ -158,7 +161,7 @@ export default function Create() {
                 mappedSettingData = mapType2ToSettingData(letter)
                 break
         }
-        
+
         setSettingData(mappedSettingData)
     }, [letter])
 
@@ -284,6 +287,7 @@ export default function Create() {
                         isCreateLetter={isCreateLetter}
                     />
                 )}
+                {isCreated && <CreatedModal letterId={isCreated} setIsCreated={setIsCreated}/>}
             </div>
         </div>
     )

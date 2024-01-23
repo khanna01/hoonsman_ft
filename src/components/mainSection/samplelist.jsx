@@ -86,6 +86,7 @@ const SampleList = ({ setModalInfo, size, isDisabled }) => {
                                     (spinAction === 2 && 720)
                                 }deg)`,
                                 zIndex: 10 - index,
+                                animation: spinAction === 2 && 'none',
                             }}
                         >
                             <img

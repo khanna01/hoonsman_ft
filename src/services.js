@@ -51,7 +51,7 @@ export class DBService {
                 'Content-Type': 'application/json',
             },
         )
-        console.log(result)
+        return result
     }
 
     readAllLetter = async () => {
