@@ -7,11 +7,11 @@ import img6 from '../imgs/template0/img6.png'
 import img7 from '../imgs/template0/img7.png'
 import img8 from '../imgs/template0/img8.png'
 
-import s1img1 from '../imgs/intro.png'
-import s1img2 from '../imgs/desc1.png'
-import s1img3 from '../imgs/desc2.png'
-import s1img4 from '../imgs/location.png'
-import s1img5 from '../imgs/conclusion.png'
+import s1img1 from '../imgs/seminar/intro.png'
+import s1img2 from '../imgs/seminar/desc1.png'
+import s1img3 from '../imgs/seminar/desc2.png'
+import s1img4 from '../imgs/seminar/location.png'
+import s1img5 from '../imgs/seminar/conclusion.png'
 
 import s2img1 from '../imgs/wedding_Image/img1.png'
 import s2img2 from '../imgs/wedding_Image/img2.png'
@@ -25,6 +25,8 @@ import s3img4 from '../imgs/Promo_Image/Comp2_Main.png'
 import s3img5 from '../imgs/Promo_Image/Comp3_Sub1.png'
 import s3img6 from '../imgs/Promo_Image/Comp3_Sub2.png'
 import s3img7 from '../imgs/Promo_Image/Comp3_Sub3.png'
+
+import defaultImg from '../imgs/hoonsman.png'
 
 const SampleData = [
     {
@@ -342,5 +344,14 @@ const SampleData = [
         },
     },
 ]
+
+export const madeDefaultData = {
+    thumbnail: defaultImg,
+}
+
+export const sampleDefaultData = {
+    id: 0,
+    thumbnail: defaultImg,
+}
 
 export default SampleData

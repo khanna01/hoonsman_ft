@@ -33,7 +33,26 @@ export default function MessageHandler({
     size,
     color,
     changeControlInfo,
+    isAILoading,
+    aiKeywords,
+    keywordIndex,
+    moveAiMessageIndex,
 }) {
+    const onRecommendClick = () => {
+        const recommendedMessage = aiKeywords[keywordIndex]
+        changeControlInfo({
+            content: recommendedMessage,
+        })
+    }
+
+    const onLeftBtnClick = () => {
+        moveAiMessageIndex('prev')
+    }
+
+    const onRightBtnClick = () => {
+        moveAiMessageIndex('next')
+    }
+
     const onTempSaveClick = () => {
         setLetterData()
     }
@@ -49,7 +68,6 @@ export default function MessageHandler({
     }
 
     const onContentChange = (e) => {
-        console.log(e.currentTarget.value)
         changeControlInfo({
             content: e.currentTarget.value,
         })
@@ -116,13 +134,30 @@ export default function MessageHandler({
                         <div className={Styles.recommend_title}>
                             이런 문구는 어때영??
                         </div>
-                        <div className={Styles.recommend_content}>
-                            Lorem ipsum ..
+                        <div
+                            onClick={onRecommendClick}
+                            className={Styles.recommend_content}
+                        >
+                            {isAILoading
+                                ? 'AI가 추천 문구를 생성 하고 있어요!'
+                                : aiKeywords[keywordIndex]}
                         </div>
                         <div className={Styles.recommend_switching_bar}>
-                            <div className={Styles.bar_btn}>{'<'}</div>
-                            <div className={Styles.recommend_count}>1 / 10</div>
-                            <div className={Styles.bar_btn}>{'>'}</div>
+                            <div
+                                onClick={onLeftBtnClick}
+                                className={Styles.bar_btn}
+                            >
+                                {'<'}
+                            </div>
+                            <div className={Styles.recommend_count}>
+                                {keywordIndex + 1} / {aiKeywords.length}
+                            </div>
+                            <div
+                                onClick={onRightBtnClick}
+                                className={Styles.bar_btn}
+                            >
+                                {'>'}
+                            </div>
                         </div>
                     </div>
                 </div>

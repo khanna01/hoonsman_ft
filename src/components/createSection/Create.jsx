@@ -19,9 +19,11 @@ import {
 } from '../../constants/factory'
 import { BASE_URL } from '../../constants/config'
 
-import { DBService } from '../../services'
+import { AIService, DBService } from '../../services'
+import CreatedModal from './CreatedModal'
 
 const dbService = new DBService(BASE_URL)
+const aiService = new AIService(BASE_URL)
 
 const sizeItemList = [
     {
@@ -101,10 +103,80 @@ const SizeBar = ({ sizeList, listIndex, setSizeListIndex }) => {
     )
 }
 
+const KeywordModal = ({ submitKeyword }) => {
+    const [keywords, setKeywords] = useState(['', ''])
+    const onKeywordChange = (e, index) => {
+        const value = e.target.value
+        setKeywords((prev) => {
+            const newKeywords = [...prev]
+            newKeywords[index] = value
+            return newKeywords
+        })
+    }
+
+    const onKeywordDeleteClick = (removeIndex) => {
+        setKeywords((prev) => prev.filter((_, index) => removeIndex !== index))
+    }
+    const onKeywordAddClick = () => {
+        setKeywords((prev) => [...prev, ''])
+    }
+    const onKeywordSubmitClick = () => {
+        submitKeyword(keywords)
+    }
+
+    return (
+        <div className={Styles.keyword_container}>
+            <div className={Styles.keyword_wrapper}>
+                <div className={Styles.keyword_title}>
+                    주제 또는 키워드를 입력해주세요!!
+                </div>
+                <div className={Styles.keyword_bar}>
+                    {keywords.map((value, index) => (
+                        <div
+                            key={'keyword' + index}
+                            className={Styles.keyword_input_box}
+                        >
+                            {index !== 0 && (
+                                <div
+                                    className={Styles.keyword_delete_btn}
+                                    onClick={() => onKeywordDeleteClick(index)}
+                                >
+                                    {' '}
+                                </div>
+                            )}
+                            <input
+                                type="text"
+                                className={Styles.keyword_input}
+                                onChange={(e) => {
+                                    onKeywordChange(e, index)
+                                }}
+                                placeholder="키워드"
+                                value={keywords[index]}
+                            />
+                        </div>
+                    ))}
+                    <div
+                        className={Styles.keyword_add_box}
+                        onClick={onKeywordAddClick}
+                    >
+                        추가
+                    </div>
+                </div>
+                <div
+                    onClick={onKeywordSubmitClick}
+                    className={Styles.keyword_submit}
+                >
+                    제출하기
+                </div>
+            </div>
+        </div>
+    )
+}
+
 export default function Create() {
     const navigate = useNavigate()
     const location = useLocation()
-
+    const displayContainerRef = useRef()
     const [settingData, setSettingData] = useState([
         {
             images: ['none'],
@@ -129,19 +201,16 @@ export default function Create() {
     })
     const [isModal, setIsModal] = useState(false)
     const [isCreateLetter, setIsCreateLetter] = useState(false)
+    const [isCreated, setIsCreated] = useState(false)
+    const [isKeywordModal, setIsKeywordModal] = useState(true)
+    const [isAILoading, setIsAILoading] = useState(true)
+    const [aiKeywords, setAIKeywords] = useState([])
+    const [keywordIndex, setKeywordIndex] = useState(0)
 
     useEffect(() => {
         console.log(location.state)
         if (!location.state) navigate('/')
     }, [navigate, location])
-
-    const onCreateClick = async () => {
-        setIsCreateLetter(true)
-        const result = await dbService.createLetter(letter)
-        console.log(result)
-        setIsCreateLetter(false)
-        setIsModal(false)
-    }
 
     // mapping letter data -> settingData
     useEffect(() => {
@@ -158,11 +227,10 @@ export default function Create() {
                 mappedSettingData = mapType2ToSettingData(letter)
                 break
         }
-        
+
         setSettingData(mappedSettingData)
     }, [letter])
 
-    const displayContainerRef = useRef()
     useEffect(() => {
         if (!displayContainerRef) return
 
@@ -180,6 +248,16 @@ export default function Create() {
             height: vHeight,
         })
     }, [displayContainerRef, sizeListIndex])
+
+    const onCreateClick = async () => {
+        setIsCreateLetter(true)
+        const result = await dbService.createLetter(letter)
+        console.log(result)
+        setIsCreateLetter(false)
+        setIsModal(false)
+        setIsCreated(result.letterid)
+    }
+
     const onLeftClick = () => {
         if (sceneIndex <= 0) return
         setSceneIndex((v) => v - 1)
@@ -191,6 +269,10 @@ export default function Create() {
         if (sceneIndex > settingData.length - 2) return
         setSceneIndex((v) => v + 1)
         setMessageFocus(0)
+    }
+
+    const addAiKeywords = (keywords) => {
+        setAIKeywords((prev) => [...prev, ...keywords])
     }
 
     const setLetterData = () => {
@@ -209,6 +291,29 @@ export default function Create() {
         }
 
         setLetter(newLetter)
+    }
+
+    const submitKeyword = async (keywords) => {
+        console.log(keywords)
+        setIsKeywordModal(false)
+        setIsAILoading(true)
+        // open ai 요청하기 ...
+        const result = await aiService.getPhrase(keywords)
+        addAiKeywords(result)
+        setIsAILoading(false)
+    }
+
+    const moveAiMessageIndex = (action) => {
+        switch (action) {
+            case 'prev':
+                if (keywordIndex <= 0) return
+                setKeywordIndex((prev) => prev - 1)
+                break
+            case 'next':
+                if (keywordIndex >= aiKeywords.length) return
+                setKeywordIndex((prev) => prev + 1)
+                break
+        }
     }
 
     return (
@@ -273,6 +378,10 @@ export default function Create() {
                         setMessageFocus={setMessageFocus}
                         setLetterData={setLetterData}
                         setIsModal={setIsModal}
+                        isAILoading={isAILoading}
+                        aiKeywords={aiKeywords}
+                        keywordIndex={keywordIndex}
+                        moveAiMessageIndex={moveAiMessageIndex}
                     />
                 </div>
                 {isModal && (
@@ -283,6 +392,15 @@ export default function Create() {
                         onCreateClick={onCreateClick}
                         isCreateLetter={isCreateLetter}
                     />
+                )}
+                {isCreated && (
+                    <CreatedModal
+                        letterId={isCreated}
+                        setIsCreated={setIsCreated}
+                    />
+                )}
+                {isKeywordModal && (
+                    <KeywordModal submitKeyword={submitKeyword} />
                 )}
             </div>
         </div>

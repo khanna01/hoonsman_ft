@@ -138,6 +138,10 @@
     margin: 0 5px;
 }
 
+.bar_btn {
+    cursor: pointer;
+}
+
 @media screen and (width < 1200px) {
     .opt {
         font-size: 13px;

@@ -95,8 +95,8 @@ export const mapType2ToSettingData = (letter) => {
             message: [],
         }
 
-        Object.keys(letter[s].image).forEach((img) => {
-            newScene.images.push(letter[s].image[img])
+        Object.keys(letter[s].image).forEach((imgKey) => {
+            newScene.images.push(letter[s].image[imgKey].path)
         })
 
         Object.keys(letter[s].message).forEach((m) => {
@@ -153,4 +153,3 @@ export const mapSettingDataToType2 = (settingData) => {
 
     return newDummy
 }
- 

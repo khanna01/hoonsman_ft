@@ -51,7 +51,13 @@ export class DBService {
                 'Content-Type': 'application/json',
             },
         )
+        return result
+    }
+
+    readAllLetter = async () => {
+        const result = await this.http.postRequest('/letter/readall')
         console.log(result)
+        return result
     }
 
     readLetter = async (letterid) => {
@@ -66,5 +72,23 @@ export class DBService {
         )
 
         return result
+    }
+}
+
+export class AIService {
+    constructor(baseUrl) {
+        this.http = new HttpReq(baseUrl)
+    }
+
+    getPhrase = async (keywords) => {
+        const result = await this.http.postRequest(
+            '/ai/getphrase',
+            JSON.stringify({ keywords }),
+            {
+                'Content-Type': 'application/json',
+            },
+        )
+        if (!result.status) return false
+        else return result.data
     }
 }
