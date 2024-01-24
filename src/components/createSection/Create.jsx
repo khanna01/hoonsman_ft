@@ -5,6 +5,7 @@ import SettingPage from './SettingPage'
 import Preview0 from '../letterLists/preview0/Template0'
 import Preview1 from '../letterLists/preview1/Template1'
 import Preview2 from '../letterLists/preview2/Template2'
+import Preview3 from '../letterLists/preview3/Template3'
 import SampleData from '../../constants/sampleData'
 import ConfirmModal from './ConfirmModal'
 import {
@@ -14,8 +15,8 @@ import {
     mapSettingDataToType1,
     mapType2ToSettingData,
     mapSettingDataToType2,
-    // mapType3ToSettingData,
-    // mapSettingDataToType3,
+    mapType3ToSettingData,
+    mapSettingDataToType3,
 } from '../../constants/factory'
 import { BASE_URL } from '../../constants/config'
 
@@ -208,7 +209,6 @@ export default function Create() {
     const [keywordIndex, setKeywordIndex] = useState(0)
 
     useEffect(() => {
-        console.log(location.state)
         if (!location.state) navigate('/')
     }, [navigate, location])
 
@@ -225,6 +225,9 @@ export default function Create() {
                 break
             case 2:
                 mappedSettingData = mapType2ToSettingData(letter)
+                break
+            case 3:
+                mappedSettingData = mapType3ToSettingData(letter)
                 break
         }
 
@@ -288,6 +291,9 @@ export default function Create() {
             case 2:
                 newLetter = mapSettingDataToType2(settingData)
                 break
+            case 3:
+                newLetter = mapSettingDataToType3(settingData)
+                break
         }
 
         setLetter(newLetter)
@@ -334,6 +340,9 @@ export default function Create() {
                         )}
                         {letter.type === 2 && (
                             <Preview2 size={previewSize} sceneData={letter} />
+                        )}
+                        {letter.type === 3 && (
+                            <Preview3 size={previewSize} sceneData={letter} />
                         )}
                     </div>
                     <SizeBar

@@ -30,7 +30,6 @@ const ImgInput = ({ imageIndex, srcName, setImgUrl }) => {
     const [isLoading, setIsLoading] = useState(false)
 
     const onImgInputClick = () => {
-        console.log('imgCLick')
         imgInputRef.current.click()
     }
 
@@ -95,7 +94,6 @@ export default function SettingPage({
             return newInfo
         })
     }
-    console.log(settingData)
 
     const changeControlInfo = (data) => {
         setSettingData((v) => {

@@ -279,11 +279,6 @@ const SampleData = [
     },
     {
         type: 3,
-        주석: {
-            large: '50px',
-            medium: '25px',
-        },
-
         s1: {
             imgs: {
                 intro: s3img1,
@@ -333,7 +328,6 @@ const SampleData = [
             ],
         },
         s4: {
-            imgs: {},
             messages: [
                 {
                     context: '지금 바로 Z플립5와 함께하세요!',

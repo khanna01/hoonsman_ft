@@ -5,70 +5,9 @@ import Comp2 from './Comp2/Comp2'
 import Comp3 from './Comp3/Comp3'
 import Comp4 from './Comp4/Comp4'
 import Blank from './Blank/Blank'
-import SettingDataSP from './SettingDataSP.json'
-import JBDummy from './JBDummy.json'
 
-const Template3 = () => {
-    //데이터
-    const mapType0ToSettingData = (letter) => {
-        const newSettingData = []
-        Object.keys(letter).forEach((k) => {
-            if (k === 'type') return
-            const newScene = {
-                images: [],
-                message: [],
-            }
-            Object.keys(letter[k].imgs).forEach((imgk) => {
-                newScene.images.push(letter[k].imgs[imgk])
-            })
-            letter[k].messages.forEach((m) => {
-                newScene.message.push({ ...m })
-            })
-            newSettingData.push(newScene)
-        })
-        return newSettingData
-    }
-
-    const mapSettingDataToType0 = (settingData, letter) => {
-        const scenesData = [settingData[0], settingData[1], settingData[2]]
-        const letterImgKeys = [
-            Object.keys(letter.s1.imgs),
-            Object.keys(letter.s2.imgs),
-            Object.keys(letter.s3.imgs),
-        ]
-
-        const newLetter = {
-            type: 0,
-            s1: {
-                imgs: {},
-                messages: [],
-            },
-            s2: {
-                imgs: {},
-                messages: [],
-            },
-            s3: {
-                imgs: {},
-                messages: [],
-            },
-        }
-
-        scenesData.forEach((sceneData, index) => {
-            newLetter[`s${index + 1}`].messages = [...sceneData.message]
-        })
-
-        letterImgKeys.forEach((imgKeys, sIndex) => {
-            imgKeys.forEach((imgKey, imgIndex) => {
-                newLetter[`s${sIndex + 1}`].imgs[imgKey] =
-                    scenesData[sIndex].images[imgIndex]
-            })
-        })
-
-        return newLetter
-    }
-    const settingData = SettingDataSP
-    const newSettingData = mapType0ToSettingData(settingData)
-    const newLetter = mapSettingDataToType0(newSettingData, JBDummy)
+const Template3 = ({ size, sceneData }) => {
+    const { width, height } = size
 
     //이벤트
     const [activeComp, setActiveComp] = useState('Comp1')
@@ -137,7 +76,11 @@ const Template3 = () => {
     }
 
     return (
-        <div className={styles.container} ref={containerRef}>
+        <div
+            className={styles.container}
+            ref={containerRef}
+            style={{ width: width + 'px', height: height + 'px' }}
+        >
             <div
                 className={`${styles.mainContainer} ${getAnimationClass(
                     'Comp1',
@@ -147,6 +90,7 @@ const Template3 = () => {
                     active={activeComp === 'Comp1'}
                     showMessage={showMessage1}
                     showDetailImage={showDetailImage}
+                    sceneData={sceneData}
                 />
             </div>
             <div
@@ -158,6 +102,7 @@ const Template3 = () => {
                     active={activeComp === 'Comp2'}
                     showMessage1={showMessage2_1}
                     showMessage2={showMessage2_2}
+                    sceneData={sceneData}
                 />
             </div>
             <div
@@ -172,6 +117,7 @@ const Template3 = () => {
                     showImage1={showImage1}
                     showImage2={showImage2}
                     showImage3={showImage3}
+                    sceneData={sceneData}
                 />
             </div>
             <div
@@ -182,6 +128,7 @@ const Template3 = () => {
                 <Comp4 // Comp4 컴포넌트 추가
                     active={activeComp === 'Comp4'}
                     showMessage4={showMessage4}
+                    sceneData={sceneData}
                 />
             </div>
             <div

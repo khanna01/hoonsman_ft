@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import Style from './Comp4.module.css'
-import dummyData from '../JBDummy.json'
 
-const Comp4 = ({ showMessage4 }) => {
+const Comp4 = ({ showMessage4, sceneData }) => {
   const [message, setMessage] = useState('')
   const [messageStyle, setMessageStyle] = useState({})
 
   useEffect(() => {
-    if (dummyData && dummyData.s4) {
-      const messageData = dummyData.s4.messages[0]
+    if (sceneData && sceneData.s4) {
+      const messageData = sceneData.s4.messages[0]
       setMessage(messageData.context)
       setMessageStyle({
-        fontSize: messageData.size === 'medium' ? '25px' : '50px',
+        fontSize: messageData.size === 'medium' ? '12px' : '24px',
         color: messageData.color,
       })
     }
-  }, [])
+  }, [sceneData])
 
   const message4Class = showMessage4 ? Style.fadeIn : ''
 

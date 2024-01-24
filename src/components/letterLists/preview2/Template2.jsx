@@ -369,7 +369,6 @@ export default function Template2({ size, sceneData }) {
     ]
 
     const ImgCount = imgs.length
-    console.log(ImgCount)
 
     const [isLoading, setIsLoading] = useState(true)
     const [imgInfo, setImgInfo] = useState({})
@@ -602,6 +601,7 @@ export default function Template2({ size, sceneData }) {
     ])
 
     useEffect(() => {
+        setIsLoading(true)
         const onWindowLoad = () => {
             setIsLoading(false)
         }
@@ -611,7 +611,10 @@ export default function Template2({ size, sceneData }) {
             img.addEventListener('load', (e) => {
                 setImgLoadedCount((prev) => {
                     console.log(prev)
-                    if (prev + 1 >= ImgCount) setIsLoading(false)
+                    if (prev + 1 >= ImgCount) {
+                        setIsLoading(false)
+                        return 0
+                    }
                     return prev + 1
                 })
 
@@ -632,7 +635,7 @@ export default function Template2({ size, sceneData }) {
         return () => {
             window.removeEventListener('load', onWindowLoad)
         }
-    }, [])
+    }, [sceneData])
 
     return (
         <div
