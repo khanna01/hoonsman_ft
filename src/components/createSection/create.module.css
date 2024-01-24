@@ -332,13 +332,14 @@
     font-size: 20px;
     padding: 15px 20px;
     border: 1px solid #3b5998bb;
+    background-color: #3b5998bb;
     border-radius: 10px;
     width: 100%;
-    color: #36518dbb;
+    color: white;
     cursor: pointer;
 }
 
 .keyword_submit:hover {
-    background-color: #3b5998bb;
+    background-color: #2d4476bb;
     color: white;
 }
