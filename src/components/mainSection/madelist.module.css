@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
 }
+
 .spin_list {
     display: flex;
     justify-content: center;
@@ -42,7 +43,40 @@
     opacity: 0;
     cursor: pointer;
 }
+
 .img_background:hover {
     background-color: rgba(255, 255, 255, 0.2);
     opacity: 1;
+}
+
+
+.left_btn,
+.right_btn {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 30px;
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    color: rgba(0, 0, 0, 0.5);
+    top: 50%;
+    transform: translateY(-50%);
+    user-select: none;
+}
+
+.left_btn {
+    left: 50px;
+}
+
+.right_btn {
+    right: 50px;
+}
+.left_btn:hover,
+.right_btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }

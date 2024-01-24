@@ -82,6 +82,10 @@ export default function SettingPage({
     setMessageFocus,
     setLetterData,
     setIsModal,
+    isAILoading,
+    aiKeywords,
+    keywordIndex,
+    moveAiMessageIndex
 }) {
     const setImgUrl = (imageIndex, imgUrl) => {
         setSettingData((v) => {
@@ -147,7 +151,11 @@ export default function SettingPage({
                     changeControlInfo={changeControlInfo}
                     setLetterData={setLetterData}
                     setIsModal={setIsModal}
+                    isAILoading={isAILoading}
+                    aiKeywords={aiKeywords}
                     {...settingData.message[messageFocus]}
+                    keywordIndex={keywordIndex}
+                    moveAiMessageIndex={moveAiMessageIndex}
                 />
             </div>
         </div>

@@ -61,9 +61,9 @@ const Main = () => {
         setIsDisabled(true)
         setPageIndex((prev) => prev - 1)
         setTimeout(() => {
-            const newLetters = allLetter.splice(
+            const newLetters = allLetter.slice(
                 (pageIndex - 1) * MAX_LETTER_COUNT,
-                MAX_LETTER_COUNT,
+                pageIndex * MAX_LETTER_COUNT,
             )
             setLetters([madeDefaultData, ...newLetters])
             setIsDisabled(false)
@@ -71,23 +71,30 @@ const Main = () => {
     }
 
     const onRightClick = () => {
-        if (isDisabled || pageIndex >= allLetter.length / MAX_LETTER_COUNT)
+        if (isDisabled || pageIndex + 1 >= allLetter.length / MAX_LETTER_COUNT)
             return
         setIsDisabled(true)
+        console.log(pageIndex)
         setPageIndex((prev) => prev + 1)
         setTimeout(() => {
             const sliceCount =
                 allLetter.length - (pageIndex + 1) * MAX_LETTER_COUNT
+            console.log(
+                sliceCount,
+                allLetter.length,
+                pageIndex + 1,
+                MAX_LETTER_COUNT,
+            )
             let newLetters
             if (sliceCount >= MAX_LETTER_COUNT)
-                newLetters = allLetter.splice(
+                newLetters = allLetter.slice(
                     (pageIndex + 1) * MAX_LETTER_COUNT,
-                    MAX_LETTER_COUNT,
+                    (pageIndex + 2) * MAX_LETTER_COUNT,
                 )
             else
-                newLetters = allLetter.splice(
+                newLetters = allLetter.slice(
                     (pageIndex + 1) * MAX_LETTER_COUNT,
-                    sliceCount,
+                    (pageIndex + 1) * MAX_LETTER_COUNT + sliceCount,
                 )
             setLetters([madeDefaultData, ...newLetters])
             setIsDisabled(false)

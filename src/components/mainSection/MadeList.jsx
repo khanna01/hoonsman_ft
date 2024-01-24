@@ -2,7 +2,14 @@ import React, { useEffect, useState } from 'react'
 import Styles from './madelist.module.css'
 import { useNavigate } from 'react-router-dom'
 
-export default function MadeList({ isLoading, letterList, size, isDisabled }) {
+export default function MadeList({
+    isLoading,
+    letterList,
+    size,
+    isDisabled,
+    onLeftClick,
+    onRightClick,
+}) {
     const navigate = useNavigate()
     const onLetterClick = (letterId) => {
         if (!letterId) return
@@ -10,13 +17,24 @@ export default function MadeList({ isLoading, letterList, size, isDisabled }) {
     }
     console.log(letterList)
     const [spinAction, setSpinAction] = useState(false)
+    const [isHover, setIsHover] = useState(false)
+
+    const onImgMouseOver = (e) => {
+        if (isHover) return
+        setIsHover(true)
+    }
+
+    const onImgMouseOut = () => {
+        if (!isHover) return
+        setIsHover(false)
+    }
 
     useEffect(() => {
         setSpinAction(0)
         setTimeout(() => {
             setSpinAction(1)
         }, 50)
-    }, [])
+    }, [letterList])
 
     useEffect(() => {
         if (isDisabled) setSpinAction(2)
@@ -32,6 +50,8 @@ export default function MadeList({ isLoading, letterList, size, isDisabled }) {
                 style={{
                     width: size + 'px',
                     height: size + 'px',
+                    animationPlayState: (isDisabled || isHover) && 'paused',
+                    animation: isDisabled && 's 10s linear infinite',
                 }}
             >
                 {!isLoading &&
@@ -60,6 +80,8 @@ export default function MadeList({ isLoading, letterList, size, isDisabled }) {
                                     }}
                                 />
                                 <div
+                                    onMouseOver={onImgMouseOver}
+                                    onMouseOut={onImgMouseOut}
                                     onClick={() => {
                                         onLetterClick(letter.letterid)
                                     }}
@@ -74,6 +96,12 @@ export default function MadeList({ isLoading, letterList, size, isDisabled }) {
                             </div>
                         )
                     })}
+            </div>
+            <div onClick={onLeftClick} className={Styles.left_btn}>
+                prev
+            </div>
+            <div onClick={onRightClick} className={Styles.right_btn}>
+                next
             </div>
         </div>
     )

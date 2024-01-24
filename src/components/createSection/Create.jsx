@@ -19,10 +19,11 @@ import {
 } from '../../constants/factory'
 import { BASE_URL } from '../../constants/config'
 
-import { DBService } from '../../services'
+import { AIService, DBService } from '../../services'
 import CreatedModal from './CreatedModal'
 
 const dbService = new DBService(BASE_URL)
+const aiService = new AIService(BASE_URL)
 
 const sizeItemList = [
     {
@@ -175,7 +176,7 @@ const KeywordModal = ({ submitKeyword }) => {
 export default function Create() {
     const navigate = useNavigate()
     const location = useLocation()
-
+    const displayContainerRef = useRef()
     const [settingData, setSettingData] = useState([
         {
             images: ['none'],
@@ -203,20 +204,13 @@ export default function Create() {
     const [isCreated, setIsCreated] = useState(false)
     const [isKeywordModal, setIsKeywordModal] = useState(true)
     const [isAILoading, setIsAILoading] = useState(true)
+    const [aiKeywords, setAIKeywords] = useState([])
+    const [keywordIndex, setKeywordIndex] = useState(0)
 
     useEffect(() => {
         console.log(location.state)
         if (!location.state) navigate('/')
     }, [navigate, location])
-
-    const onCreateClick = async () => {
-        setIsCreateLetter(true)
-        const result = await dbService.createLetter(letter)
-        console.log(result)
-        setIsCreateLetter(false)
-        setIsModal(false)
-        setIsCreated(result.letterid)
-    }
 
     // mapping letter data -> settingData
     useEffect(() => {
@@ -237,7 +231,6 @@ export default function Create() {
         setSettingData(mappedSettingData)
     }, [letter])
 
-    const displayContainerRef = useRef()
     useEffect(() => {
         if (!displayContainerRef) return
 
@@ -255,6 +248,16 @@ export default function Create() {
             height: vHeight,
         })
     }, [displayContainerRef, sizeListIndex])
+
+    const onCreateClick = async () => {
+        setIsCreateLetter(true)
+        const result = await dbService.createLetter(letter)
+        console.log(result)
+        setIsCreateLetter(false)
+        setIsModal(false)
+        setIsCreated(result.letterid)
+    }
+
     const onLeftClick = () => {
         if (sceneIndex <= 0) return
         setSceneIndex((v) => v - 1)
@@ -266,6 +269,10 @@ export default function Create() {
         if (sceneIndex > settingData.length - 2) return
         setSceneIndex((v) => v + 1)
         setMessageFocus(0)
+    }
+
+    const addAiKeywords = (keywords) => {
+        setAIKeywords((prev) => [...prev, ...keywords])
     }
 
     const setLetterData = () => {
@@ -286,11 +293,27 @@ export default function Create() {
         setLetter(newLetter)
     }
 
-    const submitKeyword = (keywords) => {
+    const submitKeyword = async (keywords) => {
         console.log(keywords)
         setIsKeywordModal(false)
         setIsAILoading(true)
         // open ai 요청하기 ...
+        const result = await aiService.getPhrase(keywords)
+        addAiKeywords(result)
+        setIsAILoading(false)
+    }
+
+    const moveAiMessageIndex = (action) => {
+        switch (action) {
+            case 'prev':
+                if (keywordIndex <= 0) return
+                setKeywordIndex((prev) => prev - 1)
+                break
+            case 'next':
+                if (keywordIndex >= aiKeywords.length) return
+                setKeywordIndex((prev) => prev + 1)
+                break
+        }
     }
 
     return (
@@ -355,6 +378,10 @@ export default function Create() {
                         setMessageFocus={setMessageFocus}
                         setLetterData={setLetterData}
                         setIsModal={setIsModal}
+                        isAILoading={isAILoading}
+                        aiKeywords={aiKeywords}
+                        keywordIndex={keywordIndex}
+                        moveAiMessageIndex={moveAiMessageIndex}
                     />
                 </div>
                 {isModal && (

@@ -271,29 +271,27 @@
 
 .keyword_input_box {
     position: relative;
-    padding: 5px;
     width: 80px;
     max-width: 80px;
     min-width: 80px;
     overflow: hidden;
-    background-color: #f5e4e1;
+    background-color: #ffc9c0;
     margin-right: 15px;
     border-radius: 5px;
 }
 
 .keyword_input {
-    padding: 8px;
-    margin-left: 5px;
     all: unset;
+    padding: 8px;
     cursor: pointer;
     font-weight: bold;
+    max-width: 70%;
 }
 
 .keyword_add_box {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5px;
     width: 50px;
     max-width: 50px;
     min-width: 50px;
@@ -307,7 +305,7 @@
 }
 
 .keyword_add_box:hover {
-    background-color: #ffd9d2;
+    background-color: #fda190;
 }
 
 .keyword_delete_btn {
@@ -332,7 +330,7 @@
     font-weight: bold;
     font-size: 20px;
     padding: 15px 20px;
-    border: 1px solid #f7e4e2;
+    border: 1px solid #ffcbc5;
     border-radius: 10px;
     width: 100%;
     color: #fa9999;
