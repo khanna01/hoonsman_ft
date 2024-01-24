@@ -263,7 +263,7 @@
 .keyword_bar {
     display: flex;
     padding: 20px;
-    border: 1px solid #f5e4e1;
+    border: 1px solid #3b599855;
     border-radius: 10px;
     width: 100%;
     overflow-x: scroll;
@@ -276,7 +276,7 @@
     max-width: 80px;
     min-width: 80px;
     overflow: hidden;
-    background-color: #ffc9c0;
+    background-color: #8b9dc3a8;
     margin-right: 15px;
     border-radius: 5px;
 }
@@ -297,7 +297,7 @@
     max-width: 50px;
     min-width: 50px;
     overflow: hidden;
-    background-color: #f3bab0;
+    background-color: #3b5998bb;
     margin-right: 15px;
     border-radius: 5px;
     cursor: pointer;
@@ -306,7 +306,7 @@
 }
 
 .keyword_add_box:hover {
-    background-color: #fda190;
+    background-color: #2d4372cc;
 }
 
 .keyword_delete_btn {
@@ -316,12 +316,12 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: #f78277;
+    background-color: #3b5998bb;
     cursor: pointer;
 }
 
 .keyword_delete_btn:hover {
-    background-color: #f6a098;
+    background-color: #3b599855;
 }
 
 .keyword_submit {
@@ -331,13 +331,14 @@
     font-weight: bold;
     font-size: 20px;
     padding: 15px 20px;
-    border: 1px solid #ffcbc5;
+    border: 1px solid #3b5998bb;
     border-radius: 10px;
     width: 100%;
-    color: #fa9999;
+    color: #36518dbb;
     cursor: pointer;
 }
 
 .keyword_submit:hover {
-    background-color: #ffd6cf;
+    background-color: #3b5998bb;
+    color: white;
 }
