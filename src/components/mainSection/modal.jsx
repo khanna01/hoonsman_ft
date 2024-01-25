@@ -44,7 +44,13 @@ function Modal({ modalInfo, setModalInfo }) {
                             sceneData={SampleData[1]}
                         />
                     )}
-                    {/* {modalInfo.id === 2 && <Template3 />} */}
+                    {id === 2 && (
+                        <Template3
+                            size={defaultSize}
+                            sceneData={SampleData[3]}
+                        />
+                    )}
+
                     {id === 3 && (
                         <Template2
                             size={defaultSize}

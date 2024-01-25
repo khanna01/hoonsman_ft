@@ -110,13 +110,6 @@ export const mapType2ToSettingData = (letter) => {
 }
 
 export const mapSettingDataToType2 = (settingData) => {
-    const scenesData = [
-        settingData[0],
-        settingData[1],
-        settingData[2],
-        settingData[3],
-    ]
-
     const newDummy = {
         type: 2,
         scene1: {
@@ -137,7 +130,7 @@ export const mapSettingDataToType2 = (settingData) => {
         },
     }
 
-    scenesData.forEach((sceneData, ind) => {
+    settingData.forEach((sceneData, ind) => {
         sceneData.images.forEach((img, index) => {
             newDummy[`scene${ind + 1}`].image[`${index + 1}`] = {
                 path: img,
@@ -145,11 +138,79 @@ export const mapSettingDataToType2 = (settingData) => {
         })
     })
 
-    scenesData.forEach((sceneData, ind) => {
+    settingData.forEach((sceneData, ind) => {
         sceneData.message.forEach((m, index) => {
             newDummy[`scene${ind + 1}`].message[`${index + 1}`] = { ...m }
         })
     })
 
+    console.log(newDummy)
     return newDummy
+}
+
+export const mapSettingDataToType3 = (settingDataSP) => {
+    const jbdummyData = {
+        type: 3,
+    }
+    let imgIndex = 0
+
+    settingDataSP.forEach((section, index) => {
+        const sectionKey = `s${index + 1}`
+        if (index === 3) {
+            jbdummyData[sectionKey] = {
+                messages: [],
+            }
+        } else {
+            jbdummyData[sectionKey] = {
+                imgs: {},
+                messages: [],
+            }
+        }
+
+        section.images.forEach((img) => {
+            let imgKey
+            if (imgIndex === 0) {
+                imgKey = 'intro'
+                imgIndex++
+            } else {
+                imgKey = `img${imgIndex}`
+                imgIndex++
+            }
+            jbdummyData[sectionKey].imgs[imgKey] = img
+        })
+
+        section.message.forEach((msg) => {
+            jbdummyData[sectionKey].messages.push({
+                context: msg.content,
+                size: msg.size || 'medium',
+                color: msg.color || 'white',
+            })
+        })
+    })
+    console.log(jbdummyData)
+    return jbdummyData
+}
+
+export const mapType3ToSettingData = (jbdummyData) => {
+    const settingDataSP = []
+
+    Object.keys(jbdummyData).forEach((sectionKey) => {
+        if (sectionKey === 'type') return
+        const section = jbdummyData[sectionKey]
+        const images = section.imgs ? Object.values(section.imgs) : []
+        const messages = section.messages.map((msg) => ({
+            content: msg.context,
+            size: msg.size || 'medium',
+            color: msg.color || 'white',
+        }))
+
+        settingDataSP.push({
+            images,
+            message: messages,
+        })
+    })
+
+    console.log(settingDataSP)
+
+    return settingDataSP
 }

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Style from './Comp2.module.css'
-import dummyData from '../JBDummy.json'
 
-const Comp2 = ({ active, showMessage1, showMessage2 }) => {
+const Comp2 = ({ active, showMessage1, showMessage2, sceneData }) => {
     const [Img3Url, setImg3Url] = useState('')
     const [message1, setMessage1] = useState('')
     const [message1Style, setMessage1Style] = useState({})
@@ -10,22 +9,22 @@ const Comp2 = ({ active, showMessage1, showMessage2 }) => {
     const [message2Style, setMessage2Style] = useState({})
 
     useEffect(() => {
-        if (dummyData && dummyData.s2) {
-            // setImg3Url(process.env.PUBLIC_URL + dummyData.s2.imgs.img3)
-            const messageData1 = dummyData.s2.messages[0]
-            const messageData2 = dummyData.s2.messages[1]
+        if (sceneData && sceneData.s2) {
+            setImg3Url(sceneData.s2.imgs.img3)
+            const messageData1 = sceneData.s2.messages[0]
+            const messageData2 = sceneData.s2.messages[1]
             setMessage1(messageData1.context)
             setMessage2(messageData2.context)
             setMessage1Style({
-                fontSize: messageData1.size === 'medium' ? '25px' : '50px',
+                fontSize: messageData1.size === 'medium' ? '12px' : '24px',
                 color: messageData1.color,
             })
             setMessage2Style({
-                fontSize: messageData2.size === 'medium' ? '25px' : '50px',
+                fontSize: messageData2.size === 'medium' ? '12px' : '24px',
                 color: messageData2.color,
             })
         }
-    }, [])
+    }, [sceneData])
 
     return (
         <div
